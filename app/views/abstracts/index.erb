@@ -1,0 +1,16 @@
+<div class="heading">
+  <h1>Abstracts
+    <span class="buttons"><a class="btn btn-primary" href="/abstracts/next">Review</a></span>
+    <span class="buttons"><a class="btn btn-default" href="/abstracts/new">New Abstract</a></span>
+  </h1>
+</div>
+
+<div>
+  <ul class="abstracts">
+    <% @abstracts.each do |abstract| %>
+    <li>
+      <a href="/abstracts/<%= abstract.id %>"><%= abstract.title %></a><span class="author"> by <%= abstract[:speaker] %></span>
+    </li>
+    <% end %>
+  </ul>
+</div>

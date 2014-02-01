@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Judy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/vendor/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="/css/style.css" type="text/css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        // Highlight current active tab
+        $('.nav li.active').removeClass('active');
+        var path = location.pathname.split("/")[1] || 'home';
+        $('li.' + path).addClass('active');
+      });
+    </script>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <a class="navbar-brand" href="/">Judy</a>
+        <div id="navbar-spy" class="collapse navbar-collapse navHeaderCollapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="home active"><a href="/">Home</a></li>
+            <li class="abstracts"><a href="/abstracts">Abstracts</a></li>
+            <!--li class="speakers"><a href="/speakers">Speakers</a></li-->
+            <!--li class="events"><a href="/events">Events</a></li-->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <div class="footer"></div>
+  </body>
+</html>

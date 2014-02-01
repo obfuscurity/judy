@@ -1,0 +1,15 @@
+<div class="heading">
+  <h1>Events
+    <span class="buttons"><a class="btn btn-default text-right" href="/events/new">New Event</a></span>
+  </h1>
+<div>
+
+<div>
+  <ul class="events">
+    <% @events.each do |event| %>
+    <li>
+      <a href="/events/<%= event.id %>"><%= event.name %></a>
+    </li>
+    <% end %>
+  </ul>
+</div>

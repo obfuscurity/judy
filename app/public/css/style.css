@@ -1,0 +1,57 @@
+* {
+}
+
+.btn {
+  font-family: sans-serif;
+}
+
+h1 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 3.0em;
+  margin: 40px 0;
+}
+
+.heading h1 span.buttons {
+  float: right;
+  margin-left: 15px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0;
+}
+
+ul.abstracts li, ul.events li {
+  font-family: 'Roboto Slab', serif;
+  margin: 12px 0;
+}
+
+ul.abstracts li a, ul.events li a {
+  font-family: 'Roboto Slab', serif;
+  font-weight: normal;
+  font-size: 1.3em;
+  color: #7e7e7e;
+}
+
+ul.abstracts li a:hover, ul.events li a:hover {
+  color: #3d3d3d;
+}
+
+ul.abstracts li span.author {
+  font-weight: 300;
+  margin-left: 6px;
+}
+
+.abstract p.body {
+  font-size: 1.5em;
+  font-family: serif;
+}
+
+#abstractForm button {
+  margin-top: 15px;
+}
+
+div.footer {
+  min-height: 200px;
+}
