@@ -13,6 +13,11 @@ module Judy
       erb :'abstracts/new'
     end
 
+    get '/abstracts/next/?' do
+      @abstract = Abstract.fetch_random_unscored_by_user(session[:user])
+      redirect to "/abstracts/#{@abstract.id}"
+    end
+
     get '/abstracts/:id/?' do
       @abstract = Abstract[params[:id]]
       status 200
