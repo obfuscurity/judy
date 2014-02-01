@@ -14,7 +14,7 @@ module Judy
     require 'controllers/events'
 
     get '/' do
-      erb :index, :locals => {}
+      redirect to '/abstracts'
     end
   end
 end
