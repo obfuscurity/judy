@@ -4,7 +4,7 @@ class NilClass
   end
 end
 
-class Scores < Sequel::Model
+class Score < Sequel::Model
 
   many_to_one :abstracts
   

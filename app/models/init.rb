@@ -15,5 +15,5 @@ Sequel.extension :core_extensions
 Sequel::Model.plugin :json_serializer
 Abstract.plugin :json_serializer
 Speaker.plugin :json_serializer
-Scores.plugin :json_serializer
+Score.plugin :json_serializer
 Event.plugin :json_serializer
