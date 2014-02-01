@@ -9,9 +9,9 @@ gem 'pg'
 gem 'sequel'
 gem 'rack-ssl-enforcer'
 gem 'json'
+gem 'pry'
 
 group :development do
-  gem 'pry'
   gem 'rack-test'
   gem 'rspec'
 end
