@@ -28,6 +28,10 @@ class Abstract < Sequel::Model
       order(:abstracts__id)
   end
 
+  def self.fetch_all_abstracts_with_related
+    Abstract.fetch_abstracts_with_related.all
+  end
+
   def self.fetch_unscored_by_user(user)
     Abstract.fetch_abstracts_with_related.
       exclude(:scores__abstract_id => :abstracts__id, :scores__judge => user)
@@ -38,7 +42,7 @@ class Abstract < Sequel::Model
       where(:scores__abstract_id => :abstracts__id, :scores__judge => user)
   end
 
-  def self.fetch_random_unscored_by_user(user)
+  def self.fetch_one_random_unscored_by_user(user)
     @abstracts = Abstract.fetch_unscored_by_user(user).all
     return @abstracts[rand(@abstracts.count).to_int]
   end

@@ -3,7 +3,7 @@ module Judy
   class Web < Sinatra::Base
 
     get '/abstracts/?' do
-      @abstracts = Abstract.fetch_abstracts_with_related
+      @abstracts = Abstract.fetch_all_abstracts_with_related
       status 200
       erb :'abstracts/index', :locals => { :abstracts => @abstracts }
     end
@@ -14,7 +14,7 @@ module Judy
     end
 
     get '/abstracts/next/?' do
-      @abstract = Abstract.fetch_random_unscored_by_user(session[:user])
+      @abstract = Abstract.fetch_one_random_unscored_by_user(session[:user])
       redirect to "/abstracts/#{@abstract.id}"
     end
 
