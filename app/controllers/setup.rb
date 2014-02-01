@@ -4,6 +4,7 @@ module Judy
 
     configure do
       enable :logging
+      enable :sessions
       use Rack::SslEnforcer if ENV['FORCE_HTTPS']
     end
 

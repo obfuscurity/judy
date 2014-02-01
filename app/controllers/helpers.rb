@@ -14,7 +14,10 @@ module Judy
       end
       def authenticated?
         ENV['JUDY_AUTH'].split(',').each do |pair|
-          return true if (pair.split(':') == @auth.credentials)
+          if (pair.split(':') == @auth.credentials)
+            session[:user] = @auth.credentials.first
+            return true
+          end
         end
         return false
       end
