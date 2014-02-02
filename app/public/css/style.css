@@ -43,9 +43,32 @@ ul.abstracts li span.author {
   margin-left: 6px;
 }
 
-.abstract p.body {
+.abstract p {
   font-size: 1.5em;
   font-family: serif;
+}
+
+.well.scoring {
+  margin-top: 50px;
+  padding: 40px 0;
+}
+
+.slider {
+  margin-left: 40px;
+  margin-top: 10px;
+}
+
+.slider-selection {
+  background: #ccc;
+}
+
+.slider-handle {
+  opacity: 1.0;
+}
+
+span#saveScore {
+  float: right;
+  margin-right: 40px;
 }
 
 #abstractForm button {

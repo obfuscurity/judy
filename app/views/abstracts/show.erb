@@ -1,5 +1,18 @@
 
-<div class="abstract col-md-6 col-md-offset-3">
+<div class="abstract col-xs-12 col-md-6 col-md-offset-3">
   <h1><%= abstract.title.gsub(/: /, ':<br />') %></h1>
-  <p class="body"><%= abstract.body.gsub(/\r\n\r/, '<br /><br />') %></p>
+  <p><%= abstract.body.gsub(/\r\n\r/, '<br /><br />') %></p>
 </div>
+
+<div class="well scoring col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+  <input class="col-xs-3 col-sm-8 col-md-6 col-lg-7" id="scoreSlider" data-slider-id="scoreSlider" type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="0"></input>
+  <span id="saveScore"><a class="btn btn-success" href="/abstracts/next">Save Review</a></span>
+</div>
+
+<script type="text/javascript">
+  $('input#scoreSlider').slider({ tooltip: 'always' });
+  /* $('#scoreSlider').on('slide', function(slideEvt) {
+    console.log(colors[slideEvt.value]);
+    $('.slider-handle').css('background-color', colors[slideEvt.value]);
+  }); */
+</script>
