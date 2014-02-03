@@ -3,7 +3,7 @@ module Judy
   class Web < Sinatra::Base
 
     get '/abstracts/?' do
-      @abstracts = Abstract.fetch_all_abstracts_with_related
+      @abstracts = Abstract.fetch_all_abstracts_and_scores
       status 200
       erb :'abstracts/index', :locals => { :abstracts => @abstracts }
     end
@@ -19,16 +19,32 @@ module Judy
     end
 
     get '/abstracts/:id/?' do
-      @abstract = Abstract[params[:id]]
+      @abstract = Abstract.fetch_one_abstract_with_score_by_judge(:id => params[:id], :judge => session[:user])
       status 200
       erb :'abstracts/show', :locals => { :abstract => @abstract }
     end
 
     post '/abstracts/new/?' do
-      @speaker = Speaker.new(:full_name => params[:full_name], :email => params[:email]).save
-      @abstract = Abstract.new(:title => params[:title], :body => params[:body], :speaker_id => @speaker.id, :event_id => 1).save
-      status 200
-      erb :'abstracts/new', :locals => { :alert => { :type => 'success', :message => 'Abstract successfully added' } }
+      begin
+        @speaker = Speaker.new(:full_name => params[:full_name], :email => params[:email]).save
+        @abstract = Abstract.new(:title => params[:title], :body => params[:body], :speaker_id => @speaker.id, :event_id => 1).save
+        status 200
+        erb :'abstracts/new', :locals => { :alert => { :type => 'success', :message => 'Abstract successfully added' } }
+      rescue => each
+        p e.message
+        halt 401
+      end
+    end
+
+    post '/abstracts/:abstract_id/scores/?' do
+      begin
+        content_type 'application/json'
+        @score = Score.upsert(:judge => session[:user], :count => params[:count], :abstract_id => params[:abstract_id])
+        status 204
+      rescue => e
+        p e.message
+        halt 401
+      end
     end
 
     put '/abstracts/:id/?' do
