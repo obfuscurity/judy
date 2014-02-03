@@ -10,6 +10,11 @@
     <% @abstracts.each do |abstract| %>
     <li>
       <a href="/abstracts/<%= abstract.id %>"><%= abstract.title %></a><span class="author"> by <%= abstract[:speaker] %></span>
+      <!-- 
+      <% abstract[:scores].each do |score| %>
+        score of <%= score[:count] %> by <%= score[:judge] %>
+      <% end %>
+      -->
     </li>
     <% end %>
   </ul>
