@@ -71,6 +71,7 @@ class Abstract < Sequel::Model
 
   def self.fetch_one_random_unscored_by_user(user)
     @abstracts = Abstract.fetch_all_abstracts_unscored_by_user(user)
+    raise Judy::JudgingComplete if @abstracts.empty?
     return @abstracts[rand(@abstracts.count).to_i]
   end
 end

@@ -1,5 +1,8 @@
 
 module Judy
+
+  class JudgingComplete < RuntimeError ; end
+
   class Web < Sinatra::Base
 
     get '/abstracts/?' do
@@ -14,8 +17,13 @@ module Judy
     end
 
     get '/abstracts/next/?' do
-      @abstract = Abstract.fetch_one_random_unscored_by_user(session[:user])
-      redirect to "/abstracts/#{@abstract.id}"
+      begin
+        @abstract = Abstract.fetch_one_random_unscored_by_user(session[:user])
+        redirect to "/abstracts/#{@abstract.id}"
+      rescue Judy::JudgingComplete
+        p "user #{session[:user]} has finished judging all abstracts"
+        redirect to '/'
+      end
     end
 
     get '/abstracts/:id/?' do
