@@ -21,10 +21,6 @@ module Judy
         end
         return false
       end
-      def json!
-        return if request.xhr?
-        halt 404
-      end
     end
   end
 end
