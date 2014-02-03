@@ -18,4 +18,13 @@ class Score < Sequel::Model
     validates_presence :judge
     validates_presence :count
   end
+
+  def self.upsert(args)
+    @score = Score.filter(:judge => args[:judge], :abstract_id => args[:abstract_id]).first
+    if @score.nil?
+      Score.new(:count => args[:count], :judge => args[:judge], :abstract_id => args[:abstract_id]).save
+    else
+      @score.update(:count => args[:count]).save
+    end
+  end
 end
