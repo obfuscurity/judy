@@ -4,7 +4,7 @@ module Judy
 
     helpers do
       def protected!
-        return if authorized?
+        return if authorized? || request.xhr?
         headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
         halt 401
       end
