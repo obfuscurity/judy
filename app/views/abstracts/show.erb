@@ -5,14 +5,31 @@
 </div>
 
 <div class="well scoring col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
-  <input class="col-xs-3 col-sm-8 col-md-6 col-lg-7" id="scoreSlider" data-slider-id="scoreSlider" type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="0"></input>
-  <span id="saveScore"><a class="btn btn-success" href="/abstracts/next">Save Review</a></span>
+  <form id="score" action="#" method="post" role="form">
+    <input class="col-xs-3 col-sm-8 col-md-6 col-lg-7" id="scoreSlider" data-slider-id="scoreSlider" type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="<%= abstract[:score] || 0 %>"></input>
+    <span class="saveScore"><a class="btn btn-success">Save Review</a></span>
+  </form>
 </div>
 
 <script type="text/javascript">
+  var sliderValue = <%= abstract[:score] || 0 %>;
+
   $('input#scoreSlider').slider({ tooltip: 'always' });
-  /* $('#scoreSlider').on('slide', function(slideEvt) {
-    console.log(colors[slideEvt.value]);
-    $('.slider-handle').css('background-color', colors[slideEvt.value]);
-  }); */
+  $('#scoreSlider').on('slide', function(slideEvt) { sliderValue = slideEvt.value; });
+  $('.saveScore').on('click', 'a', function() {
+    $.ajax({
+      accepts: {json: 'application/json'},
+      cache: false,
+      data: { count: sliderValue },
+      dataType: 'json',
+      type: 'POST',
+      url: window.location.pathname + '/scores'
+    }).success(function() {
+      window.location = '/abstracts/next'
+    }).fail(function(xhr, textStatus, errorThrown) {
+      console.log('failed to score abstract: ' + errorThrown);
+      // XXX - need to alert here
+    });
+
+  })
 </script>

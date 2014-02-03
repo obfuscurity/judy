@@ -66,7 +66,7 @@ ul.abstracts li span.author {
   opacity: 1.0;
 }
 
-span#saveScore {
+span.saveScore {
   float: right;
   margin-right: 40px;
 }
