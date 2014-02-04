@@ -7,6 +7,7 @@
 
 <div class="heading">
   <h1>Abstracts
+    <span id="totalReviewed"></span>
     <span class="buttons"><a class="btn btn-primary" href="/abstracts/next">Review</a></span>
     <span class="buttons"><a class="btn btn-default" href="/abstracts/new">New Abstract</a></span>
   </h1>
@@ -26,3 +27,7 @@
     <% end %>
   </ul>
 </div>
+
+<script>
+  new Donut({ element: 'span#totalReviewed', height: 45, width: 45, dataset: [<%= dataset_pct_complete %>], colors: ['red', '#dfdfdf'] });
+</script>

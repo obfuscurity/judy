@@ -11,6 +11,10 @@ h1 {
   margin: 40px 0;
 }
 
+.heading h1 span#totalReviewed {
+  vertical-align: middle;
+}
+
 .heading h1 span.buttons {
   float: right;
   margin-left: 15px;
