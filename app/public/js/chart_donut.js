@@ -7,6 +7,7 @@ var Donut = function(args) {
   var height = args.height || 100;
   var radius = Math.min(width, height) / 2;
   var colors = args.colors;
+  var title = args.title;
 
   if (typeof colors == 'undefined') {
     var color = d3.scale.category20();
@@ -22,6 +23,10 @@ var Donut = function(args) {
     .attr("height", height)
     .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+  if (typeof title != 'undefined') {
+    svg.append("title").text(title);
+  }
 
   var path = svg.selectAll("path")
     .data(pie(dataset))
