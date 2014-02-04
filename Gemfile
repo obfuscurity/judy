@@ -8,6 +8,7 @@ gem 'thin'
 gem 'pg'
 gem 'sequel'
 gem 'rack-ssl-enforcer'
+gem 'rack-flash3'
 gem 'json'
 gem 'pry'
 

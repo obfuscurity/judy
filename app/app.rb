@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'rack-ssl-enforcer'
+require 'rack-flash'
 require 'json'
 
 require 'models/init'

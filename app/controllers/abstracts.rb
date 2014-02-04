@@ -21,7 +21,7 @@ module Judy
         @abstract = Abstract.fetch_one_random_unscored_by_user(session[:user])
         redirect to "/abstracts/#{@abstract.id}"
       rescue Judy::JudgingComplete
-        p "user #{session[:user]} has finished judging all abstracts"
+        flash[:notice] = "Good news! You've finished reviewing all abstracts."
         redirect to '/'
       end
     end

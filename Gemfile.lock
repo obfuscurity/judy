@@ -13,6 +13,8 @@ GEM
       method_source (~> 0.8)
       slop (~> 3.4)
     rack (1.5.2)
+    rack-flash3 (1.0.5)
+      rack
     rack-protection (1.5.2)
       rack
     rack-ssl-enforcer (0.2.6)
@@ -46,6 +48,7 @@ DEPENDENCIES
   json
   pg
   pry
+  rack-flash3
   rack-ssl-enforcer
   rack-test
   rake
