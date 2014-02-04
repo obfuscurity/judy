@@ -12,7 +12,7 @@ h1 {
 }
 
 .heading h1 span#totalReviewed {
-  vertical-align: middle;
+  vertical-align: sub;
 }
 
 .heading h1 span.buttons {
