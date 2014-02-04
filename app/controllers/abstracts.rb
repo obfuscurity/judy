@@ -8,7 +8,7 @@ module Judy
     get '/abstracts/?' do
       @abstracts = Abstract.fetch_all_abstracts_and_scores
       status 200
-      erb :'abstracts/index', :locals => { :abstracts => @abstracts }
+      erb :'abstracts/index', :locals => { :abstracts => @abstracts, :dataset_pct_complete => dataset_pct_complete }
     end
 
     get '/abstracts/new/?' do

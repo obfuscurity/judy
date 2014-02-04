@@ -3,6 +3,8 @@ module Judy
   class Web < Sinatra::Base
 
     helpers do
+
+      # Auth helpers
       def protected!
         return if authorized? || request.xhr?
         headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
@@ -20,6 +22,15 @@ module Judy
           end
         end
         return false
+      end
+      def judges
+        ENV['JUDY_AUTH'].split(',').each.map {|a| a.split(':').first}
+      end
+
+      # Chart helpers
+      def dataset_pct_complete
+        pct_complete = Score.all.count / (Abstract.all.count * judges.count.to_f) * 100
+        return "#{pct_complete}, #{100 - pct_complete}"
       end
     end
   end
