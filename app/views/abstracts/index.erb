@@ -29,5 +29,12 @@
 </div>
 
 <script>
-  new Donut({ element: 'span#totalReviewed', height: 45, width: 45, dataset: [<%= dataset_pct_complete %>], colors: ['red', '#dfdfdf'] });
+  new Donut({
+    title: 'Percent complete',
+    element: 'span#totalReviewed',
+    height: 45,
+    width: 45,
+    dataset: [<%= dataset_pct_complete %>],
+    colors: ['red', '#dfdfdf']
+  });
 </script>
