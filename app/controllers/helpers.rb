@@ -28,9 +28,16 @@ module Judy
       end
 
       # Chart helpers
-      def dataset_pct_complete
-        pct_complete = Score.all.count / (Abstract.all.count * judges.count.to_f) * 100
-        return "#{pct_complete}, #{100 - pct_complete}"
+      def dataset_total_complete
+        total_complete = Score.all.count / (Abstract.all.count * judges.count.to_f) * 100
+        return "#{total_complete}, #{100 - total_complete}"
+      end
+      def dataset_user_complete
+        user_complete = Score.filter(:judge => session[:user]).all.count.to_f / Abstract.all.count * 100
+        return "#{user_complete}, #{100 - user_complete}"
+      end
+      def dataset_scoring_breakdown
+        return "6, 9, 20, 12, 13, 7, 11, 4, 3"
       end
     end
   end
