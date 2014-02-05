@@ -8,13 +8,14 @@ var Donut = function(args) {
   var radius = Math.min(width, height) / 2;
   var colors = args.colors;
   var title = args.title;
+  var color = null;
 
   if (typeof colors == 'undefined') {
-    var color = d3.scale.category20();
+    color = d3.scale.category20();
   } else if (typeof colors == 'function') {
-    var color = colors;
+    color = colors;
   } else {
-    var color = d3.scale.ordinal().range(colors);
+    color = d3.scale.ordinal().range(colors);
   }
 
   var pie = d3.layout.pie().sort(null);
