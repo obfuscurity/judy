@@ -15,7 +15,10 @@ module Judy
     require 'controllers/events'
 
     get '/' do
-      redirect to '/abstracts'
+      erb :index, :locals => {
+        :dataset_total_complete => dataset_total_complete,
+        :dataset_scoring_breakdown => dataset_scoring_breakdown
+      }
     end
   end
 end
