@@ -36,7 +36,7 @@ module Judy
         user_complete = Score.filter(:judge => session[:user]).all.count.to_f / Abstract.all.count * 100
         return user_complete.nan? ? '0.0, 100.0' : "#{user_complete}, #{100 - user_complete}"
       end
-      def dataset_scoring_breakdown
+      def dataset_score_distribution
         return "6, 9, 20, 12, 13, 7, 11, 4, 3"
       end
     end
