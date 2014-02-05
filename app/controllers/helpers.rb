@@ -30,10 +30,12 @@ module Judy
       # Chart helpers
       def dataset_total_complete
         total_complete = Score.all.count / (Abstract.all.count * judges.count.to_f) * 100
+        total_complete = total_complete.round(2)
         return total_complete.nan? ? '0.0, 100.0' : "#{total_complete}, #{100 - total_complete}"
       end
       def dataset_user_complete
         user_complete = Score.filter(:judge => session[:user]).all.count.to_f / Abstract.all.count * 100
+        user_complete = user_complete.round(2)
         return user_complete.nan? ? '0.0, 100.0' : "#{user_complete}, #{100 - user_complete}"
       end
       def dataset_score_distribution
