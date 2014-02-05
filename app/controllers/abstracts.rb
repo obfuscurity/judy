@@ -25,7 +25,7 @@ module Judy
         redirect to "/abstracts/#{@abstract.id}"
       rescue Judy::JudgingComplete
         flash[:notice] = "Good news! You've finished reviewing all abstracts."
-        redirect to '/'
+        redirect to '/abstracts'
       end
     end
 
