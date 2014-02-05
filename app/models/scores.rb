@@ -27,4 +27,10 @@ class Score < Sequel::Model
       @score.update(:count => args[:count]).save
     end
   end
+
+  def self.all_by_median
+  end
+
+  def self.all_by_mode
+  end
 end
