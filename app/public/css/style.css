@@ -11,7 +11,17 @@ h1 {
   margin: 40px 0;
 }
 
-.heading h1 span#totalReviewed {
+.charts span.title {
+  display: table;
+  margin: 0 auto;
+  margin-top: -10px;
+}
+
+.charts svg {
+  display: block;
+}
+
+.heading h1 span#userReviewed {
   vertical-align: sub;
 }
 
