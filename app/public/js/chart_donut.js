@@ -11,12 +11,14 @@ var Donut = function(args) {
 
   if (typeof colors == 'undefined') {
     var color = d3.scale.category20();
+  } else if (typeof colors == 'function') {
+    var color = colors;
   } else {
     var color = d3.scale.ordinal().range(colors);
   }
 
   var pie = d3.layout.pie().sort(null);
-  var arc = d3.svg.arc().innerRadius(radius - (width / 3)).outerRadius(radius - width / 6);
+  var arc = d3.svg.arc().innerRadius(radius - (width / 3.5)).outerRadius(radius - width / 6);
 
   var svg = d3.select(element).append("svg")
     .attr("width", width)
