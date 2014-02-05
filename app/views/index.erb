@@ -10,6 +10,11 @@
       colors: ('<%= dataset_total_complete %>' == '100.0, 0.0') ? ['#68E768', '#68E768'] : ['red', '#dfdfdf']
     },
     {
+      title: 'Your Progress',
+      dataset: [<%= dataset_user_complete %>],
+      colors: ('<%= dataset_user_complete %>' == '100.0, 0.0') ? ['#68E768', '#68E768'] : ['red', '#dfdfdf']
+    },
+    {
       title: 'Scoring Breakdown',
       dataset: [<%= dataset_scoring_breakdown %>],
       colors: d3.scale.category20c()
