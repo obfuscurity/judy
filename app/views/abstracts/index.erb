@@ -7,7 +7,7 @@
 
 <div class="heading">
   <h1>Abstracts
-    <span id="totalReviewed"></span>
+    <span id="userReviewed"></span>
     <span class="buttons"><a class="btn btn-primary" href="/abstracts/next">Review</a></span>
     <span class="buttons"><a class="btn btn-default" href="/abstracts/new">New Abstract</a></span>
   </h1>
@@ -29,12 +29,14 @@
 </div>
 
 <script>
+  // User progress chart
+  var colors = ('<%= dataset_user_complete %>' == '100.0, 0.0') ? ['#68E768', '#68E768'] : ['red', '#dfdfdf'];
   new Donut({
-    title: 'Percent complete',
-    element: 'span#totalReviewed',
+    title: 'Your Progress',
+    element: 'span#userReviewed',
     height: 50,
     width: 50,
-    dataset: [<%= dataset_pct_complete %>],
-    colors: ['red', '#dfdfdf']
+    dataset: [<%= dataset_user_complete %>],
+    colors: colors
   });
 </script>
