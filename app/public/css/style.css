@@ -37,8 +37,17 @@ h1 {
 }
 
 .heading h1 span.buttons {
+  margin-top: 10px;
+  margin-bottom: 30px;
   float: right;
-  margin-left: 15px;
+}
+
+.heading h1 span.buttons * {
+  float: right;
+}
+
+.heading h1 span.buttons a.btn {
+  margin-left: 10px;
 }
 
 ul {
