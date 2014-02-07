@@ -15,6 +15,7 @@ h1 {
   display: table;
   margin: 0 auto;
   margin-top: -10px;
+  text-align: center;
 }
 
 .charts svg {
