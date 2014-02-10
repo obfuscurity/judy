@@ -14,6 +14,8 @@ Sequel.migration do
       String      :name
     end
 
+    self[:events].insert(:id => 1, :name => 'Sample Event')
+
     create_table(:abstracts) do
       primary_key :id
       String      :title,         :size => 255, :null => false
