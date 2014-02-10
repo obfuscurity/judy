@@ -13,6 +13,14 @@
       <div class="btn-group pull-right">
         <a class="btn btn-primary" href="/abstracts/next">Review</a>
         <a class="btn btn-default" href="/abstracts/new">Create</a>
+        <button id="sort" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          Sort
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li class="text-right"><a id="desc" href="?sort=desc">High to Low Score</a></li>
+          <li class="text-right"><a id="asc" href="?sort=asc">Low to High Score</a></li>
+        </ul>
       </div>
     </div>
   </h1>

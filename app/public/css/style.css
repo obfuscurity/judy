@@ -42,6 +42,14 @@ h1 {
   margin-bottom: 30px;
 }
 
+.heading h1 .buttons button#sort {
+  min-width: 65px;
+}
+
+.heading h1 .buttons ul li a {
+  font-family: sans-serif;
+}
+
 ul {
   list-style: none;
   padding: 0;
@@ -109,7 +117,7 @@ span.saveScore {
   margin-right: 40px;
 }
 
-.saveScore ul li a:hover {
+.saveScore ul li a:hover, .buttons ul li a:hover {
   background-color: rgb(245, 245, 245);
   color: #000;
 }
