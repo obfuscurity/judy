@@ -37,18 +37,9 @@ h1 {
   opacity: 0.6;
 }
 
-.heading h1 span.buttons {
+.heading h1 div.buttons {
   margin-top: 10px;
   margin-bottom: 30px;
-  float: right;
-}
-
-.heading h1 span.buttons * {
-  float: right;
-}
-
-.heading h1 span.buttons a.btn {
-  margin-left: 10px;
 }
 
 ul {
