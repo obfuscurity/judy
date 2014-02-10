@@ -34,6 +34,7 @@ h1 {
 
 .heading h1 span#userReviewed {
   vertical-align: sub;
+  opacity: 0.6;
 }
 
 .heading h1 span.buttons {
