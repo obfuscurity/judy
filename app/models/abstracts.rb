@@ -40,7 +40,13 @@ class Abstract < Sequel::Model
         abstract.values[:my_score] = Score.filter(:judge => args[:judge], :abstract_id => abstract.id).first.count
       end
     end
-    return @abstracts
+    if args[:sort].eql?('asc')
+      return @sorted_abstracts = @abstracts.sort {|a,b| (a.values[:my_score] || -1) <=> (b.values[:my_score] || -1)}
+    elsif args[:sort].eql?('desc')
+      return @sorted_abstracts = @abstracts.sort {|a,b| (b.values[:my_score] || -1) <=> (a.values[:my_score] || -1)}
+    else
+      return @abstracts
+    end
   end
 
   def self.fetch_one_abstract_with_score_by_judge(args)
