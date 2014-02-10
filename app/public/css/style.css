@@ -108,6 +108,11 @@ span.saveScore {
   margin-right: 40px;
 }
 
+.saveScore ul li a:hover {
+  background-color: rgb(245, 245, 245);
+  color: #000;
+}
+
 #abstractForm button {
   margin-top: 15px;
 }

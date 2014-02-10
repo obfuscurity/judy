@@ -7,7 +7,18 @@
 <div class="well scoring col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
   <form id="score" action="#" method="post" role="form">
     <input class="col-xs-3 col-sm-8 col-md-6 col-lg-7" id="scoreSlider" data-slider-id="scoreSlider" type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="<%= abstract[:score] || 0 %>"></input>
-    <span class="saveScore"><a class="btn btn-success">Save Review</a></span>
+    <span class="saveScore">
+      <div class="btn-group">
+        <button id="submit" class="btn btn-primary">Save Review</button>
+        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a id="skip" href="#">Skip</a></li>
+        </ul>
+      </div>
+    </span>
   </form>
 </div>
 
@@ -21,7 +32,7 @@
 
   $('input#scoreSlider').slider({ tooltip: 'always' });
   $('#scoreSlider').on('slide', function(slideEvt) { sliderValue = slideEvt.value; });
-  $('.saveScore').on('click', 'a', function() {
+  $('.saveScore').on('click', 'button#submit', function() {
     $.ajax({
       accepts: {json: 'application/json'},
       cache: false,
@@ -35,8 +46,10 @@
       console.log('failed to score abstract: ' + errorThrown);
       // XXX - need to alert here
     });
-
-  })
+  });
+  $('.saveScore').on('click', 'a#skip', function() {
+    window.location = '/abstracts/next'
+  });
 </script>
 
 <script>
