@@ -20,7 +20,7 @@ class Abstract < Sequel::Model
     validates_presence :body
   end
 
-  def self.fetch_all_abstracts_and_scores
+  def self.fetch_all_abstracts_and_scores(args)
     @abstracts = Abstract.select('abstracts.*'.lit, 'speakers.full_name AS speaker'.lit, :speakers__email, 'events.name AS event_name'.lit).distinct.
       from(:abstracts, :speakers, :events).
       where(:abstracts__speaker_id => :speakers__id).
@@ -29,10 +29,15 @@ class Abstract < Sequel::Model
     @scores = Score.all
     @abstracts.each do |abstract|
       abstract.values[:scores] = [] if abstract.values[:scores].nil?
+      abstract.values[:total_score] = 0
       @scores.each do |score|
         if score.abstract_id == abstract.id
           abstract.values[:scores] << { :judge => score.judge, :count => score.count }
+          abstract.values[:total_score] += score.count
         end
+      end
+      if args[:judge]
+        abstract.values[:my_score] = Score.filter(:judge => args[:judge], :abstract_id => abstract.id).first.count
       end
     end
     return @abstracts
