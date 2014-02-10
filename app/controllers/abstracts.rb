@@ -6,7 +6,7 @@ module Judy
   class Web < Sinatra::Base
 
     get '/abstracts/?' do
-      @abstracts = Abstract.fetch_all_abstracts_and_scores
+      @abstracts = Abstract.fetch_all_abstracts_and_scores(:judge => session[:user])
       status 200
       erb :'abstracts/index', :locals => {
         :abstracts => @abstracts,
