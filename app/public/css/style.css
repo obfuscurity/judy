@@ -62,6 +62,17 @@ ul.abstracts li, ul.events li {
   margin: 12px 0;
 }
 
+ul.abstracts li span.score {
+  display: inline-block;
+  min-width: 30px;
+  margin-right: 10px;
+  background: #bbb;
+  border-radius: 15px;
+  font-family: sans-serif;
+  text-align: center;
+  color: #fff;
+}
+
 ul.abstracts li a, ul.events li a {
   font-family: 'Roboto Slab', serif;
   font-weight: normal;

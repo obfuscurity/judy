@@ -20,6 +20,11 @@
   <ul class="abstracts">
     <% @abstracts.each do |abstract| %>
     <li>
+      <span class="score">
+      <% if ! abstract[:my_score].nil? %>
+        <%= abstract[:my_score] %>
+      <% end %>
+      </span>
       <a href="/abstracts/<%= abstract.id %>"><%= abstract.title %></a><span class="author"><!-- by <%= abstract[:speaker] %> --></span>
       <!-- 
       <% abstract[:scores].each do |score| %>
