@@ -20,7 +20,7 @@ class Abstract < Sequel::Model
     validates_presence :body
   end
 
-  def self.fetch_all_abstracts_and_scores(args)
+  def self.fetch_all_abstracts_and_scores(args=nil)
     @abstracts = Abstract.select('abstracts.*'.lit, 'speakers.full_name AS speaker'.lit, :speakers__email, 'events.name AS event_name'.lit).distinct.
       from(:abstracts, :speakers, :events).
       where(:abstracts__speaker_id => :speakers__id).
