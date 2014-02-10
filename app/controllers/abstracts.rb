@@ -31,8 +31,13 @@ module Judy
 
     get '/abstracts/:id/?' do
       @abstract = Abstract.fetch_one_abstract_with_score_by_judge(:id => params[:id], :judge => session[:user])
+      @progress = Score.judge_progress(session[:user])
       status 200
-      erb :'abstracts/show', :locals => { :abstract => @abstract }
+      erb :'abstracts/show', :locals => {
+        :abstract => @abstract,
+        :progress => @progress,
+        :dataset_user_complete => dataset_user_complete
+      }
     end
 
     post '/abstracts/new/?' do
