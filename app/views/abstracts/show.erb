@@ -11,6 +11,11 @@
   </form>
 </div>
 
+<div class="well progress col-xs-12 col-sm-12 col-md-6 col-md-offset-3 text-center">
+  <span id="chart"></span>
+  <span id="completed"><%= progress[:completed] %></span> out of <span id="total"><%= progress[:total] %></span> abstracts reviewed
+</div>
+
 <script type="text/javascript">
   var sliderValue = <%= abstract[:score] || 0 %>;
 
@@ -32,4 +37,18 @@
     });
 
   })
+</script>
+
+<script>
+  // User progress chart
+  var colors = ('<%= dataset_user_complete %>' == '100.0, 0.0') ? ['#68E768', '#68E768'] : ['#999', '#fff'];
+  new Donut({
+    title: 'Your Progress',
+    element: '.progress span#chart',
+    height: 50,
+    width: 50,
+    dataset: [<%= dataset_user_complete %>],
+    colors: colors,
+    unit: '%'
+  });
 </script>

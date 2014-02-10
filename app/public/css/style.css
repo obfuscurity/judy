@@ -109,6 +109,39 @@ span.saveScore {
   margin-top: 15px;
 }
 
+div.progress {
+  min-height: 90px;
+  padding: 13px 0;
+}
+
+.progress {
+  background: none;
+  box-shadow: none;
+  font-weight: 200;
+  color: #bbb;
+}
+
+.progress span {
+  font-weight: 100;
+  color: #666;
+  margin: 0 5px;
+}
+
+.progress span#chart {
+  display: inline-block;
+  vertical-align: bottom;
+  margin: 0 auto;
+  opacity: 0.5;
+}
+
+.progress span#completed {
+  font-size: 3.0em;
+}
+
+.progress span#total {
+  font-size: 2.0em;
+}
+
 div.footer {
   min-height: 150px;
 }
