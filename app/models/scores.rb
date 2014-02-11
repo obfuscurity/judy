@@ -31,10 +31,4 @@ class Score < Sequel::Model
   def self.judge_progress(judge)
     return { :completed => Score.filter(:judge => judge).all.count, :total => Abstract.all.count }
   end
-
-  def self.all_by_median
-  end
-
-  def self.all_by_mode
-  end
 end
