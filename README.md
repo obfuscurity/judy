@@ -29,7 +29,7 @@ Judy's design goals are straightforward:
 * Interpreting the results should be simple.
 * The interface should fulfill all of the above requirements, particularly on mobile devices, with as few clicks as possible.
 
-Judy has already helped me to review seventy-eight (78) submissions for the upcoming Monitorama PDX conference in record time. It has also allowed us to bring in a larger team of volunteers to review and judge papers than would have ever been possible without it, increasing diversity and helping to float the very best talks to the top of the stack.
+Judy has already helped us to review seventy-eight (78) submissions for the upcoming Monitorama PDX conference in record time. It enabled us to bring in a larger team of volunteers to review and judge papers than would have previously been possible, increasing diversity and helping to float the very best talks to the top of the stack.
 
 ## Deployment
 
