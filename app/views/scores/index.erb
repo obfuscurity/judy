@@ -1,0 +1,33 @@
+
+<div class="heading">
+  <h1>Scoring Results
+    <span id="totalReviewed"></span>
+    <div class="buttons pull-right col-xs-12 col-sm-6 col-md-4">
+      <div class="btn-group pull-right">
+        <button id="sort" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          Sort
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="?sort=mean">Mean</a></li>
+          <!--li><a href="?sort=median">Median</a></li-->
+          <!--li><a href="?sort=mode">Mode</a></li-->
+        </ul>
+      </div>
+    </div>
+  </h1>
+</div>
+
+<div>
+  <ul class="abstracts">
+    <% @abstracts.each do |abstract| %>
+    <li>
+      <span class="score">
+        <% sort_type = "#{@sort}_score".to_sym %>
+        <%= "%0.2f" % abstract[sort_type] %>
+      </span>
+      <a href="/abstracts/<%= abstract.id %>"><%= abstract.title %></a><span class="author"> by <a href="mailto:<%= abstract[:email] %>"><%= abstract[:speaker] %></a></span>
+    </li>
+    <% end %>
+  </ul>
+</div>
