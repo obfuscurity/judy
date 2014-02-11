@@ -40,7 +40,7 @@ Judy stores all of its relational data in PostgreSQl. It is assumed you have a l
 All environment variables can be set from the command-line, although it's suggested to use `.env` instead. This file will automatically be picked up by foreman, which is also helpful when debugging (e.g. `foreman run pry`). This file will not be committed (unless you remove or modify `.gitignore`) so you shouldn't have to worry about accidentally leaking credentials.
 
 * `DATABASE_URL` (required)
-* `JUDY_AUTH` (optional)
+* `JUDY_AUTH` (required)
 * `FORCE_HTTPS` (optional)
 
 ### Authorization
