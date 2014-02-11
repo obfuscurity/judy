@@ -1,6 +1,12 @@
 
+<% if @sort.eql?('mode') %>
+<div class="alert alert-warning">
+  Note that we only sort on the <strong>mode</strong> if a single mode value was returned. Otherwise we report null and those entries will appear at the bottom of the list.
+</div>
+<% end %>
+
 <div class="heading">
-  <h1>Scoring Results
+  <h1>Scoring Results (<%= @sort %>)
     <span id="totalReviewed"></span>
     <div class="buttons pull-right col-xs-12 col-sm-6 col-md-4">
       <div class="btn-group pull-right">
