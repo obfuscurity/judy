@@ -36,6 +36,9 @@ class Abstract < Sequel::Model
           abstract.values[:total_score] += score.count
         end
       end
+      abstract.values[:mean_score] = abstract.values[:scores].empty? ? 0.0 : (abstract.values[:total_score] / (abstract.values[:scores].count || 0).to_f).round(2)
+      #abstract.values[:median_score]
+      #abstract.values[:mode_score]
       if args[:judge]
         abstract.values[:my_score] = Score.filter(:judge => args[:judge], :abstract_id => abstract.id).first.count
       end
@@ -44,6 +47,8 @@ class Abstract < Sequel::Model
       return @sorted_abstracts = @abstracts.sort {|a,b| (a.values[:my_score] || -1) <=> (b.values[:my_score] || -1)}
     elsif args[:sort].eql?('desc')
       return @sorted_abstracts = @abstracts.sort {|a,b| (b.values[:my_score] || -1) <=> (a.values[:my_score] || -1)}
+    elsif args[:sort].eql?('mean')
+      return @sorted_abstracts = @abstracts.sort {|a,b| (b.values[:mean_score] || -1) <=> (a.values[:mean_score] || -1)}
     else
       return @abstracts
     end
