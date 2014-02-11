@@ -51,6 +51,7 @@
       $('div.alert').toggleClass('hidden');
       $('div.alert').append('Encountered an error trying to submit your score. Please <a class="alert-link" href="' + window.location.pathname + '">reload</a> and try again.');
     });
+    return false;
   });
   $('.saveScore').on('click', 'a#skip', function() {
     window.location = '/abstracts/next'
