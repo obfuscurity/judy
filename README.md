@@ -18,6 +18,19 @@
 
 A small Sinatra app for reading and voting on event CFP submissions. Developed for use with the Monitorama conferences.
 
+## Goals
+
+The traditional for reviewing and sorting through conference CFP submissions is a tedious and thankless task. Most conference organizers recognize this as a largely manual effort, using some combination of spreadsheets and dead trees. Judy aims to streamline the process, with the ultimate goal of having the abstract review process as enjoyable as reading stories on Instapaper within your favorite tablet device.
+
+Judy's design goals are straightforward:
+
+* Collecting abstracts should be easy.
+* Reading abstracts should be enjoyable.
+* Interpreting the results should be simple.
+* The interface should fulfill all of the above requirements, particularly on mobile devices, with as few clicks as possible.
+
+Judy has already helped me to review seventy-eight (78) submissions for the upcoming Monitorama PDX conference in record time. It has also allowed us to bring in a larger team of volunteers to review and judge papers than would have ever been possible without it, increasing diversity and helping to float the very best talks to the top of the stack.
+
 ## Deployment
 
 Judy stores all of its relational data in PostgreSQl. It is assumed you have a local PostgreSQL server available for development.
