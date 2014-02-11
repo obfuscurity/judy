@@ -63,9 +63,8 @@ ul.abstracts li, ul.events li {
 
 ul.abstracts li span.score {
   display: inline-block;
-  min-width: 30px;
+  min-width: 50px;
   margin-right: 10px;
-  padding: 0 10px;
   background: #bbb;
   border-radius: 15px;
   font-family: sans-serif;
