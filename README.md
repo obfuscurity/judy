@@ -43,13 +43,10 @@ $ open http://127.0.0.1:5000
 
 ```bash
 $ heroku create
-$ heroku addons:add heroku-postgresql:dev
-$ heroku pg:promote `heroku config | grep POSTGRES | cut -d':' -f1`
-$ heroku config:set JUDY_AUTH=user:pass
-$ heroku config:set FORCE_HTTPS=true
 $ git push heroku master
 $ heroku run bundle exec rake db:migrate:up
-$ heroku scale web=1
+$ heroku config:set JUDY_AUTH=user:pass
+$ heroku config:set FORCE_HTTPS=true
 $ heroku open
 ```
 
