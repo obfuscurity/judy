@@ -10,8 +10,8 @@
         </button>
         <ul class="dropdown-menu" role="menu">
           <li><a href="?sort=mean">Mean</a></li>
-          <!--li><a href="?sort=median">Median</a></li-->
-          <!--li><a href="?sort=mode">Mode</a></li-->
+          <li><a href="?sort=median">Median</a></li>
+          <li><a href="?sort=mode">Mode</a></li>
         </ul>
       </div>
     </div>
@@ -24,7 +24,13 @@
     <li>
       <span class="score">
         <% sort_type = "#{@sort}_score".to_sym %>
-        <%= "%0.2f" % abstract[sort_type] %>
+        <% if ! abstract[sort_type].nil? %>
+          <% if @sort.eql?('mode') %>
+            <%= abstract[sort_type] %>
+          <% else %>
+            <%= "%0.2f" % abstract[sort_type] %>
+          <% end %>
+        <% end %>
       </span>
       <a href="/abstracts/<%= abstract.id %>"><%= abstract.title %></a><span class="author"> by <a href="mailto:<%= abstract[:email] %>"><%= abstract[:speaker] %></a></span>
     </li>
