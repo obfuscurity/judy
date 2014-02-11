@@ -65,6 +65,7 @@ ul.abstracts li span.score {
   display: inline-block;
   min-width: 30px;
   margin-right: 10px;
+  padding: 0 10px;
   background: #bbb;
   border-radius: 15px;
   font-family: sans-serif;
@@ -86,6 +87,12 @@ ul.abstracts li a:hover, ul.events li a:hover {
 ul.abstracts li span.author {
   font-weight: 300;
   margin-left: 6px;
+  color: #777;
+}
+
+ul.abstracts li span.author a {
+  font-weight: 300;
+  font-size: inherit;
   color: #777;
 }
 
