@@ -37,7 +37,7 @@ module Judy
         return user_complete.nan? ? '0.0, 100.0' : "#{user_complete.round(2)}, #{(100 - user_complete).round(2)}"
       end
       def dataset_score_distribution
-        return "6, 9, 20, 12, 13, 7, 11, 4, 3"
+        return Score.all.reduce([]) {|a,score| a[score.count] ||= 0; a[score.count] += 1; a}.map {|c| c.to_i}.join(',')
       end
     end
   end
