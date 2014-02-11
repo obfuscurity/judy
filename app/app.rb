@@ -11,8 +11,7 @@ module Judy
     require 'controllers/setup'
     require 'controllers/helpers'
     require 'controllers/abstracts'
-    require 'controllers/speakers'
-    require 'controllers/events'
+    require 'controllers/scores'
 
     get '/' do
       erb :index, :locals => {
