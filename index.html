@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Judy by obfuscurity</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Judy</h1>
+        <p>Bespoke service for reviewing CFP submissions</p>
+        <p class="view"><a href="https://github.com/obfuscurity/judy">View the Project on GitHub <small>obfuscurity/judy</small></a></p>
+        <ul>
+          <li><a href="https://github.com/obfuscurity/judy/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/obfuscurity/judy/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/obfuscurity/judy">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="judy" class="anchor" href="#judy"><span class="octicon octicon-link"></span></a>Judy</h1>
+
+<h2>
+<a name="screenshots" class="anchor" href="#screenshots"><span class="octicon octicon-link"></span></a>Screenshots</h2>
+
+<h3>
+<a name="listing-abstracts" class="anchor" href="#listing-abstracts"><span class="octicon octicon-link"></span></a>Listing Abstracts</h3>
+
+<p><img src="https://github.com/obfuscurity/judy/raw/master/screenshots/03_abstracts.png" alt="list" title="List of Abstracts"></p>
+
+<h3>
+<a name="reading-and-scoring-an-abstract" class="anchor" href="#reading-and-scoring-an-abstract"><span class="octicon octicon-link"></span></a>Reading and Scoring an Abstract</h3>
+
+<p><img src="https://github.com/obfuscurity/judy/raw/master/screenshots/04_review.png" alt="score" title="Reviewing an Abstract"></p>
+
+<h3>
+<a name="reviewing-scores" class="anchor" href="#reviewing-scores"><span class="octicon octicon-link"></span></a>Reviewing Scores</h3>
+
+<p><img src="https://github.com/obfuscurity/judy/raw/master/screenshots/05_results-mean.png" alt="review" title="Scoring Results"></p>
+
+<h2>
+<a name="purpose" class="anchor" href="#purpose"><span class="octicon octicon-link"></span></a>Purpose</h2>
+
+<p>A small Sinatra app for reading and voting on event CFP submissions. Developed for use with the Monitorama conferences.</p>
+
+<h2>
+<a name="goals" class="anchor" href="#goals"><span class="octicon octicon-link"></span></a>Goals</h2>
+
+<p>The traditional for reviewing and sorting through conference CFP submissions is a tedious and thankless task. Most conference organizers recognize this as a largely manual effort, using some combination of spreadsheets and dead trees. Judy aims to streamline the process, with the ultimate goal of having the abstract review process as enjoyable as reading stories on Instapaper within your favorite tablet device.</p>
+
+<p>Judy's design goals are straightforward:</p>
+
+<ul>
+<li>Collecting abstracts should be easy.</li>
+<li>Reading abstracts should be enjoyable.</li>
+<li>Interpreting the results should be simple.</li>
+<li>The interface should fulfill all of the above requirements, particularly on mobile devices, with as few clicks as possible.</li>
+</ul><p>Judy has already helped us to review seventy-eight (78) submissions for the upcoming Monitorama PDX conference in record time. It enabled us to bring in a larger team of volunteers to review and judge papers than would have previously been possible, increasing diversity and helping to float the very best talks to the top of the stack.</p>
+
+<h2>
+<a name="deployment" class="anchor" href="#deployment"><span class="octicon octicon-link"></span></a>Deployment</h2>
+
+<p>Judy stores all of its relational data in PostgreSQl. It is assumed you have a local PostgreSQL server available for development.</p>
+
+<h3>
+<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h3>
+
+<p>All environment variables can be set from the command-line, although it's suggested to use <code>.env</code> instead. This file will automatically be picked up by foreman, which is also helpful when debugging (e.g. <code>foreman run pry</code>). This file will not be committed (unless you remove or modify <code>.gitignore</code>) so you shouldn't have to worry about accidentally leaking credentials.</p>
+
+<ul>
+<li>
+<code>DATABASE_URL</code> (required)</li>
+<li>
+<code>JUDY_AUTH</code> (required)</li>
+<li>
+<code>FORCE_HTTPS</code> (optional)</li>
+</ul><h3>
+<a name="authorization" class="anchor" href="#authorization"><span class="octicon octicon-link"></span></a>Authorization</h3>
+
+<p>The Judy UI is protected by Basic Authentication. Credentials should be set using the <code>JUDY_AUTH</code> environment variable as colon-delimited credential pairs. Multiple pairs should be delimited with commas. For example:</p>
+
+<pre><code>JUDY_AUTH=user1:foo,user2:bar,user3:baz
+</code></pre>
+
+<h3>
+<a name="local" class="anchor" href="#local"><span class="octicon octicon-link"></span></a>Local</h3>
+
+<p>Judy uses the Sinatra web framework under Ruby 1.9. Anyone wishing to run Judy as a local service should be familiar with common Ruby packaging and dependency management utilities such as RVM and Bundler. If you are installing a new Ruby version with RVM, make sure that you have the appropriate OpenSSL development libraries installed before compiling Ruby.</p>
+
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>rvm use 1.9.3
+<span class="nv">$ </span>bundle install
+<span class="nv">$ </span>createdb judy
+<span class="nv">$ </span>cp .env.example .env
+<span class="nv">$ $EDITOR</span> .env
+<span class="nv">$ </span>bundle <span class="nb">exec </span>rake db:migrate:up
+<span class="nv">$ </span>foreman start
+<span class="nv">$ </span>open http://127.0.0.1:5000
+</pre></div>
+
+<h3>
+<a name="heroku" class="anchor" href="#heroku"><span class="octicon octicon-link"></span></a>Heroku</h3>
+
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>heroku create
+<span class="nv">$ </span>git push heroku master
+<span class="nv">$ </span>heroku run bundle <span class="nb">exec </span>rake db:migrate:up
+<span class="nv">$ </span>heroku config:set <span class="nv">JUDY_AUTH</span><span class="o">=</span>user:pass
+<span class="nv">$ </span>heroku config:set <span class="nv">FORCE_HTTPS</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">$ </span>heroku open
+</pre></div>
+
+<h3>
+<a name="migrations" class="anchor" href="#migrations"><span class="octicon octicon-link"></span></a>Migrations</h3>
+
+<p>Database upgrades (or downgrades) should use the built-in <code>rake</code> migration targets. For upgrading to the newest version in your development or non-Heroku production environment:</p>
+
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>bundle <span class="nb">exec </span>rake db:migrate:up
+</pre></div>
+
+<p>If for some reason you need to downgrade to a previous migration target, make sure to set the <code>VERSION</code> number:</p>
+
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>bundle <span class="nb">exec </span><span class="nv">VERSION</span><span class="o">=</span>3 rake db:migrate:to
+</pre></div>
+
+<p>If you're running on Heroku, simply prefix the aforementioned commands with <code>heroku run</code> (and any other relevant options).</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Judy is distributed under the MIT license. Third-party software libraries included with this project are distributed under their respective licenses.</p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/obfuscurity">obfuscurity</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
