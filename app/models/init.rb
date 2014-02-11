@@ -1,4 +1,5 @@
 require 'sequel'
+require 'simple_stats'
 require 'json'
 
 db = ENV['DATABASE_URL'] || 'postgres://localhost/judy'
