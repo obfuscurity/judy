@@ -2,11 +2,17 @@
 
 ## Screenshots
 
-The list of abstracts:
-![review](https://github.com/obfuscurity/judy/raw/master/screenshots/03_abstracts.png "List of Abstracts")
+### Listing Abstracts
 
-Reading and scoring an abstract:
-![review](https://github.com/obfuscurity/judy/raw/master/screenshots/04_review.png "Reviewing an Abstract")
+![list](https://github.com/obfuscurity/judy/raw/master/screenshots/03_abstracts.png "List of Abstracts")
+
+### Reading and Scoring an Abstract
+
+![score](https://github.com/obfuscurity/judy/raw/master/screenshots/04_review.png "Reviewing an Abstract")
+
+### Reviewing Scores
+
+![review](https://github.com/obfuscurity/judy/raw/master/screenshots/05_results-mean.png "Scoring Results")
 
 ## Purpose
 
