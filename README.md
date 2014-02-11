@@ -1,6 +1,11 @@
 # Judy
 
-![review](https://github.com/obfuscurity/judy/raw/master/screenshots/03_abstracts.png "Reviewing an Abstract")
+## Screenshots
+
+The list of abstracts:
+![review](https://github.com/obfuscurity/judy/raw/master/screenshots/03_abstracts.png "List of Abstracts")
+
+Reading and scoring an abstract:
 ![review](https://github.com/obfuscurity/judy/raw/master/screenshots/04_review.png "Reviewing an Abstract")
 
 ## Purpose
