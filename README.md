@@ -33,7 +33,7 @@ Judy has already helped us to review seventy-eight (78) submissions for the upco
 
 ## Deployment
 
-Judy stores all of its relational data in PostgreSQl. It is assumed you have a local PostgreSQL server available for development.
+Judy stores all of its relational data in PostgreSQL. It is assumed you have a local PostgreSQL server available for development.
 
 ### Options
 
