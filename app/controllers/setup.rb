@@ -5,9 +5,11 @@ module Judy
     configure do
       enable :logging
       enable :sessions
+      enable :cross_origin
       use Rack::SslEnforcer if ENV['FORCE_HTTPS']
       use Rack::Flash
-      set :protection, :origin_whitelist => ['http://127.0.0.1:8000']
+      disable :protection
+      #set :protection, :except => [:http_origin, :remote_token]
     end
 
     before do

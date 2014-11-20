@@ -41,6 +41,10 @@ module Judy
     end
 
     post '/abstracts/new/?' do
+      cross_origin :allow_origin => '*',
+        :allow_methods => [:post],
+        :allow_credentials => false,
+        :max_age => "60"
       begin
         @speaker = Speaker.new(:full_name => params[:full_name], :email => params[:email]).save
         @abstract = Abstract.new(:title => params[:title], :body => params[:body], :speaker_id => @speaker.id, :event_id => 1).save
