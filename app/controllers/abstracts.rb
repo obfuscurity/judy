@@ -46,7 +46,12 @@ module Judy
       cross_origin
       begin
         @speaker = Speaker.new(:full_name => params[:full_name], :email => params[:email]).save
-        @abstract = Abstract.new(:title => params[:title], :body => params[:body], :speaker_id => @speaker.id, :event_id => 1).save
+        @abstract = Abstract.new(
+          :title => params[:title],
+          :body => params[:body],
+          :type => params[:type],
+          :speaker_id => @speaker.id,
+          :event_id => 1).save
         status 200
         erb :'abstracts/new', :locals => { :alert => { :type => 'success', :message => 'Abstract successfully added' } }
       rescue => each
