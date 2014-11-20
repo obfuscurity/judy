@@ -54,7 +54,7 @@ module Judy
           :event_id => 1).save
         status 200
         erb :'abstracts/new', :locals => { :alert => { :type => 'success', :message => 'Abstract successfully added' } }
-      rescue => each
+      rescue => e
         p e.message
         halt 401
       end
