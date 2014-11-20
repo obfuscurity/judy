@@ -2,7 +2,7 @@
 Sequel.migration do
   up do
     alter_table(:abstracts) do
-      add_column :type, Text, :null => false
+      add_column :type, String, :null => false
     end
   end
 
