@@ -7,7 +7,7 @@ module Judy
       enable :sessions
       use Rack::SslEnforcer if ENV['FORCE_HTTPS']
       use Rack::Flash
-      set :protection, :except => [:json_csrf]
+      set :protection, :origin_whitelist => ['http://127.0.0.1:8000']
     end
 
     before do
