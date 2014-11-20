@@ -5,6 +5,8 @@ module Judy
 
   class Web < Sinatra::Base
 
+    register Sinatra::CrossOrigin
+
     get '/abstracts/?' do
       @abstracts = Abstract.fetch_all_abstracts_and_scores(:judge => session[:user], :sort => params[:sort])
       status 200
@@ -41,10 +43,7 @@ module Judy
     end
 
     post '/abstracts/new/?' do
-      cross_origin :allow_origin => '*',
-        :allow_methods => [:post],
-        :allow_credentials => false,
-        :max_age => "60"
+      cross_origin
       begin
         @speaker = Speaker.new(:full_name => params[:full_name], :email => params[:email]).save
         @abstract = Abstract.new(:title => params[:title], :body => params[:body], :speaker_id => @speaker.id, :event_id => 1).save

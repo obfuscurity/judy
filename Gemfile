@@ -4,7 +4,7 @@ ruby '1.9.3'
 
 gem 'rake'
 gem 'sinatra'
-gem 'sinatra-cross_origin', '~> 0.3.1'
+gem 'sinatra-cross_origin'
 gem 'thin'
 gem 'pg'
 gem 'sequel'

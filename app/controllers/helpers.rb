@@ -6,7 +6,7 @@ module Judy
 
       # Auth helpers
       def protected!
-        return if authorized? || request.xhr?
+        return if authorized? || cfp_submission?
         headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
         halt 401
       end
@@ -22,6 +22,11 @@ module Judy
           end
         end
         return false
+      end
+      def cfp_submission?
+        request.path.eql?('/abstracts/new') &&
+        request.request_method.eql?('POST') &&
+        request.form_data? && !request.forwarded?
       end
       def judges
         ENV['JUDY_AUTH'].split(',').each.map {|a| a.split(':').first}
