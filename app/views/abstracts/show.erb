@@ -5,7 +5,7 @@
 
 <div class="abstract col-xs-12 col-md-6 col-md-offset-3">
   <h1><%= abstract.title.gsub(/: /, ':<br />') %></h1>
-  <p><%= abstract.body.gsub(/\r\n\r/, '<br /><br />') %></p>
+  <p><%= abstract.body.gsub(/\n/, '<br />').gsub(/\r\n\r/, '<br /><br />') %></p>
 </div>
 
 <div class="well scoring col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
