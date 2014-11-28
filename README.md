@@ -41,6 +41,7 @@ All environment variables can be set from the command-line, although it's sugges
 
 * `DATABASE_URL` (required)
 * `JUDY_AUTH` (required)
+* `JUDY_ADMIN` (optional)
 * `FORCE_HTTPS` (optional)
 
 ### Authorization
@@ -50,6 +51,14 @@ The Judy UI is protected by Basic Authentication. Credentials should be set usin
 ```
 JUDY_AUTH=user1:foo,user2:bar,user3:baz
 ```
+
+Users with administrative privileges should have their username(s) added to the `JUDY_ADMIN` environment variable. From the previous example, if user1 and user3 are allowed to edit abstracts, your variable should look like this:
+
+```
+JUDY_ADMIN=user1,user3
+```
+
+Currently only *editing* abstracts is allowed with the administrative privilege.
 
 ### Local
 
