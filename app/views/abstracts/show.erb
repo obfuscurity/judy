@@ -3,6 +3,24 @@
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 </div>
 
+<div class="modal fade" id="deleteAbstract">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Delete Abstract</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you <b>sure</b> you want to delete this abstract? There's no turning back!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" id="deleteAbstract" class="btn btn-danger">Delete Abstract</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="abstract col-xs-12 col-md-6 col-md-offset-3">
   <h1 id="title"><%= abstract.title.gsub(/: /, ':<br />') %></h1>
   <div id="body">
@@ -41,6 +59,7 @@
           <li><a id="skip" href="#">Skip</a></li>
           <% if user_is_admin? %>
           <li><a id="edit" href="#">Edit</a></li>
+          <li><a id="delete" href="#" data-toggle="modal" data-target="#deleteAbstract">Delete</a></li>
           <% end %>
         </ul>
       </div>
@@ -53,6 +72,7 @@
   <span id="completed"><%= progress[:completed] %></span> out of <span id="total"><%= progress[:total] %></span> abstracts reviewed
 </div>
 
+<!-- Scoring handler -->
 <script type="text/javascript">
   var sliderValue = <%= abstract[:score] || 0 %>;
 
@@ -78,6 +98,10 @@
   $('.saveScore').on('click', 'a#skip', function() {
     window.location = '/abstracts/next'
   });
+</script>
+
+<!-- Edit abstract handlers -->
+<script type="text/javascript">
   <% if user_is_admin? %>
   $('.saveScore').on('click', 'a#edit', function() {
     $('.abstract h1#title').addClass('hidden');
@@ -111,9 +135,30 @@
   });
   <% end %>
 </script>
+ 
+<!-- Delete abstract handler -->
+<script type="text/javascript">
+  <% if user_is_admin? %>
+  $('button#deleteAbstract').on('click', function() {
+    return $.ajax({
+      accepts: {json: 'application/json'},
+      cache: false,
+      dataType: 'json',
+      error: function(xhr, textStatus, errorThrown) { console.log(errorThrown); },
+      type: 'DELETE',
+      url: window.location.pathname
+    }).success(function(d) {
+      console.log("successfully deleted abstract");
+      window.location = '/abstracts';
+    }).fail(function(d) {
+      console.log(d.responseText);
+    });
+  });
+  <% end %>
+</script>
 
+<!-- User progress chart -->
 <script>
-  // User progress chart
   var colors = ('<%= dataset_user_complete %>' == '100.0, 0.0') ? ['#68E768', '#68E768'] : ['#999', '#fff'];
   new Donut({
     title: 'Your Progress',

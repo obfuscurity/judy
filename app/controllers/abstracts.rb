@@ -88,9 +88,15 @@ module Judy
     end
 
     delete '/abstracts/:id/?' do
-      Abstract[params[:id]].destroy
-      status 200
-      redirect to '/abstracts'
+      begin
+        raise "User is not an admin" unless user_is_admin?
+        content_type 'application/json'
+        Abstract[params[:id]].destroy
+        status 204
+      rescue => e
+        p e.message
+        halt 500, e.message
+      end
     end
   end
 end

@@ -58,7 +58,7 @@ Users with administrative privileges should have their username(s) added to the 
 JUDY_ADMIN=user1,user3
 ```
 
-Currently only *editing* abstracts is allowed with the administrative privilege.
+Administrators are able to *edit* and *delete* abstracts from the abstract view.
 
 ### Local
 
