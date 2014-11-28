@@ -39,6 +39,9 @@
         </button>
         <ul class="dropdown-menu" role="menu">
           <li><a id="skip" href="#">Skip</a></li>
+          <% if user_is_admin? %>
+          <li><a id="edit" href="#">Edit</a></li>
+          <% end %>
         </ul>
       </div>
     </span>
