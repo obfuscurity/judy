@@ -75,6 +75,38 @@
   $('.saveScore').on('click', 'a#skip', function() {
     window.location = '/abstracts/next'
   });
+  <% if user_is_admin? %>
+  $('.saveScore').on('click', 'a#edit', function() {
+    $('.abstract h1#title').addClass('hidden');
+    $('.abstract div#body').addClass('hidden');
+    $('.abstract div.form').removeClass('hidden');
+  });
+  $('.abstract').on('click', 'button#cancel', function() {
+    $('.abstract h1#title').removeClass('hidden');
+    $('.abstract div#body').removeClass('hidden');
+    $('.abstract div.form').addClass('hidden');
+  });
+  $('.abstract').on('click', 'button#edit', function() {
+    opts = {
+      title: $('.abstract .form input#title')[0].value,
+      body: $('.abstract .form textarea#body')[0].value
+    };
+    return $.ajax({
+      accepts: {json: 'application/json'},
+      cache: false,
+      data: opts,
+      dataType: 'json',
+      error: function(xhr, textStatus, errorThrown) { console.log(errorThrown); },
+      type: 'PUT',
+      url: window.location.pathname
+    }).success(function(d) {
+      console.log("successfully updated abstract");
+      window.location = window.location.pathname;
+    }).fail(function(d) {
+      console.log(d.responseText);
+    });
+  });
+  <% end %>
 </script>
 
 <script>
