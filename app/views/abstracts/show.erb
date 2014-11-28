@@ -4,8 +4,27 @@
 </div>
 
 <div class="abstract col-xs-12 col-md-6 col-md-offset-3">
-  <h1><%= abstract.title.gsub(/: /, ':<br />') %></h1>
-  <p><%= abstract.body.gsub(/\n/, '<br />').gsub(/\r\n\r/, '<br /><br />') %></p>
+  <h1 id="title"><%= abstract.title.gsub(/: /, ':<br />') %></h1>
+  <div id="body">
+    <%= abstract.body.gsub(/\n/, '<br />').gsub(/\r\n\r/, '<br /><br />') %>
+  </div>
+  <% if user_is_admin? %>
+  <div class="well form hidden">
+    <h1>Edit Abstract</h1>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input class="form-control" id="title" name="title" value="<%= abstract.title %>"></input>
+    </div>
+    <div class="form-group">
+      <label for="body">Body</label>
+      <textarea class="form-control" rows="20" id="body" name="body"><%= abstract.body %></textarea>
+    </div>
+    <div class="form-group">
+      <button id="cancel" class="btn btn-default">Cancel</button>
+      <button id="edit" class="btn btn-danger">Save Changes</button>
+    </div>
+  </div>
+  <% end %>
 </div>
 
 <div class="well scoring col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
