@@ -72,10 +72,19 @@ module Judy
     end
 
     put '/abstracts/:id/?' do
-      @abstract = Abstract[params[:id]]
-      @abstract.update(params).save
-      status 200
-      erb :'abstracts/show', :locals => { :abstract => @abstract }
+      begin
+        raise "User is not an admin" unless user_is_admin?
+        content_type 'application/json'
+        @abstract = Abstract[params[:id]]
+        %w[title body].each do |attr|
+          @abstract.update(attr.to_sym => params[attr]) if !params[attr].nil?
+        end
+        @abstract.save
+        status 204
+      rescue => e
+        p e.message
+        halt 500, e.message
+      end
     end
 
     delete '/abstracts/:id/?' do
