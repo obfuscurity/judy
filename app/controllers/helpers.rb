@@ -28,6 +28,12 @@ module Judy
         request.request_method.eql?('POST') &&
         request.form_data? && !request.forwarded?
       end
+      def user_is_admin?
+        ENV['JUDY_ADMIN'].split(',').each do |admin|
+          return true if admin.eql?(@auth.credentials.first)
+        end
+        return false
+      end
       def judges
         ENV['JUDY_AUTH'].split(',').each.map {|a| a.split(':').first}
       end
