@@ -95,7 +95,31 @@ ul.abstracts li span.author a {
   color: #777;
 }
 
-.abstract p {
+div.abstract {
+  padding: 0;
+}
+
+.abstract h1#title.hidden, .abstract div#body.hidden, .abstract div.form.hidden {
+  display: none;
+}
+
+.abstract div.form {
+  margin-top: 30px;
+}
+
+.abstract .form h1 {
+  margin: 15px 0 30px;
+}
+
+.abstract .form button {
+  margin-top: 10px;
+}
+
+.abstract .form button#edit {
+  margin-left: 15px;
+}
+
+.abstract div#body {
   font-size: 1.5em;
   font-family: serif;
 }
