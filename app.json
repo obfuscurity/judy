@@ -1,0 +1,34 @@
+{
+  "name": "Judy",
+  "description": "Bespoke service for reviewing CFP submissions",
+  "repository": "https://github.com/obfuscurity/judy",
+  "website": "http://obfuscurity.github.io/judy/",
+  "keywords": [
+    "ruby",
+    "conference",
+    "cfp"
+  ],
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate:up"
+  },
+  "env": {
+    "JUDY_AUTH": {
+      "description": "Username/passwords required for access ('user:pass,user2:pass,...'')",
+      "value": "user:password,user2:password2",
+      "required": true
+    },
+    "JUDY_ADMIN": {
+      "description": "Users (names from JUDY_AUTH) that are allowed to admin",
+      "value": "user,user3",
+      "required": false
+    },
+    "FORCE_HTTPS": {
+        "description": "Always use HTTPS (you probably don't want to change this)",
+        "value": "true",
+        "required": false
+    }
+  },
+  "addons": [
+    "heroku-postgresql"
+  ]
+}

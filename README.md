@@ -77,6 +77,10 @@ $ open http://127.0.0.1:5000
 
 ### Heroku
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+Or, to deploy manually:
+
 ```bash
 $ heroku create
 $ git push heroku master
