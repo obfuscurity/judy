@@ -70,6 +70,7 @@ $ bundle install
 $ createdb judy
 $ cp .env.example .env
 $ $EDITOR .env
+$ export DATABASE_URL=... # needed for rake task
 $ bundle exec rake db:migrate:up
 $ foreman start
 $ open http://127.0.0.1:5000
