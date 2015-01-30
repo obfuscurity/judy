@@ -1,3 +1,4 @@
 .env*
+!.env.example
 .rbenv-version
 .ruby-version
