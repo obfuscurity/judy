@@ -23,6 +23,7 @@
 
 <div class="abstract col-xs-12 col-md-6 col-md-offset-3">
   <h1 id="title"><%= abstract.title.gsub(/: /, ':<br />') %></h1>
+  <h4 id="label"><span class="label label-<%= label %>"><%= abstract.type %></span></h4>
   <div id="body">
     <%= abstract.body.gsub(/\n/, '<br />').gsub(/\r\n\r/, '<br /><br />') %>
   </div>
