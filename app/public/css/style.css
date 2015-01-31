@@ -8,7 +8,10 @@
 h1 {
   font-family: 'Roboto Slab', serif;
   font-size: 3.0em;
-  margin: 40px 0;
+}
+
+h4#label {
+  margin: 25px 0 35px;
 }
 
 .charts span.title {
@@ -54,6 +57,10 @@ ul {
   list-style: none;
   padding: 0;
   margin: 30px 0;
+}
+
+ul.abstracts li.hidden {
+  display: none;
 }
 
 ul.abstracts li, ul.events li {

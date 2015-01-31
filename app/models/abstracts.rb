@@ -95,4 +95,18 @@ class Abstract < Sequel::Model
     raise Judy::JudgingComplete if @abstracts.empty?
     return @abstracts[rand(@abstracts.count).to_i]
   end
+
+  def self.type_label(type)
+    # here we're associating a Bootstrap label class with each type
+    case type
+    when 'session'
+      return 'primary'
+    when 'workshop'
+      return 'success'
+    when 'lightning'
+      return 'warning'
+    else
+      return 'default'
+    end
+  end
 end
