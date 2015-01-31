@@ -10,15 +10,28 @@
     <span id="totalReviewed"></span>
     <div class="buttons pull-right col-xs-12 col-sm-6 col-md-4">
       <div class="btn-group pull-right">
-        <button id="sort" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-          Sort
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="?sort=mean">Mean</a></li>
-          <li><a href="?sort=median">Median</a></li>
-          <li><a href="?sort=mode">Mode</a></li>
-        </ul>
+        <div class="btn-group">
+          <button id="sort" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            Sort
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="?sort=mean">Mean</a></li>
+            <li><a href="?sort=median">Median</a></li>
+            <li><a href="?sort=mode">Mode</a></li>
+          </ul>
+        </div>
+        <div class="btn-group">
+          <button id="type" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <span id="name">Abstract Type</span>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu filter-types" role="menu">
+            <li><a id="session">Sessions</a></li>
+            <li><a id="workshop">Workshops</a></li>
+            <li><a id="lightning">Lightning Talks</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </h1>
@@ -27,7 +40,7 @@
 <div>
   <ul class="abstracts">
     <% @abstracts.each do |abstract| %>
-    <li>
+    <li class="<%= abstract.type %>">
       <span class="score">
         <% sort_type = "#{@sort}_score".to_sym %>
         <% if ! abstract[sort_type].nil? %>
@@ -43,3 +56,31 @@
     <% end %>
   </ul>
 </div>
+
+<script>
+  /*
+  // We perform filtering based on abstract type
+  // here in the frontend rather than backend like
+  // we do for the sorting functionality.
+  //
+  // We show Sessions by default and hide the others.
+  */
+
+  var updateTypeButton = function(label) {
+    $('button#type span#name').text(label);
+  };
+
+  var showAbstracts = function(type) {
+    $('.abstracts li').addClass('hidden');
+    $('.abstracts li.' + type).removeClass('hidden');
+  };
+
+  showAbstracts('session');
+  updateTypeButton('Sessions');
+
+  $('.filter-types li').on('click', 'a', function() {
+    showAbstracts(this.id);
+    console.log(this);
+    updateTypeButton($(this).text());
+  });
+</script>
