@@ -48,8 +48,7 @@
 
 <div class="well scoring col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
   <form id="score" action="#" method="post" role="form">
-    <span class="commentbox-title">Your Review Comments</span>
-    <textarea name="comment" id="commentbox" class="form-control commentbox" rows="3"><%= abstract[:comment] %></textarea>
+    <textarea name="comment" id="commentbox" class="form-control commentbox" rows="3" placeholder="Review Comments"><%= abstract[:comment] %></textarea>
     <input class="col-xs-3 col-sm-8 col-md-6 col-lg-7" id="scoreSlider" data-slider-id="scoreSlider" type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="<%= abstract[:score] || 0 %>"></input>
     <span class="saveScore">
       <div class="btn-group">
