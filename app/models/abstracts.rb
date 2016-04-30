@@ -32,7 +32,7 @@ class Abstract < Sequel::Model
       abstract.values[:total_score] = 0
       @scores.each do |score|
         if score.abstract_id == abstract.id
-          abstract.values[:scores] << { :judge => score.judge, :count => score.count }
+          abstract.values[:scores] << { :judge => score.judge, :count => score.count, :comment => score.comment }
           abstract.values[:total_score] += score.count
         end
       end
@@ -67,6 +67,7 @@ class Abstract < Sequel::Model
       where(:abstracts__event_id => :events__id).first
     @score = Score.filter(:judge => args[:judge], :abstract_id => args[:id]).first
     @abstract[:score] = @score.count if !@score.nil?
+    @abstract[:comment] = @score.comment
     return @abstract
   end
 
