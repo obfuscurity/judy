@@ -23,7 +23,8 @@
 
 <div class="abstract col-xs-12 col-md-6 col-md-offset-3">
   <h1 id="title"><%= abstract.title.gsub(/: /, ':<br />') %></h1>
-  <h4 id="label"><span class="label label-<%= label %>"><%= abstract.type %></span></h4>
+  <h4 id="label"><span class="label label-<%= label %>"><%= abstract.type %></span>
+  <% if user_is_admin? && abstract.accepted == 1 %><span class="label label-accepted">accepted</span><% end %></h4>
   <div id="body">
     <%= abstract.body.gsub(/\n/, '<br />').gsub(/\r\n\r/, '<br /><br />') %>
   </div>
@@ -59,6 +60,7 @@
         <ul class="dropdown-menu" role="menu">
           <li><a id="skip" href="#">Skip</a></li>
           <% if user_is_admin? %>
+          <li><a id="acceptAbstract" href="#">Toggle Acceptance</a></li>
           <li><a id="edit" href="#">Edit</a></li>
           <li><a id="delete" href="#" data-toggle="modal" data-target="#deleteAbstract">Delete</a></li>
           <% end %>
@@ -136,7 +138,35 @@
   });
   <% end %>
 </script>
- 
+
+<!-- Accept abstract handler -->
+<script type="text/javascript">
+  <% if user_is_admin? %>
+  <% if abstract.accepted == 1 %>
+  var acceptVar = null
+  <% else %>
+  var acceptVar = 1
+  <% end %>
+
+  $('a#acceptAbstract').on('click', function() {
+    return $.ajax({
+      accepts: {json: 'application/json'},
+      cache: false,
+      data: {accepted: acceptVar},
+      dataType: 'json',
+      error: function(xhr, textStatus, errorThrown) { console.log(errorThrown); },
+      type: 'PUT',
+      url: window.location.pathname
+    }).success(function(d) {
+      console.log("successfully accepted abstract");
+      window.location = window.location.pathname;
+    }).fail(function(d) {
+      console.log(d.responseText);
+    });
+  });
+  <% end %>
+</script>
+
 <!-- Delete abstract handler -->
 <script type="text/javascript">
   <% if user_is_admin? %>

@@ -141,6 +141,33 @@ div.abstract {
   margin-top: 10px;
 }
 
+.label-accepted {
+  display: inline;
+  border-style: solid;
+  border
+  border-color: #5cb85c;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  line-height: 1;
+  color: #5cb85c;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+  background-color: #ffffff;
+}
+
+ul.abstracts li span.score-accept {
+  display: inline-block;
+  min-width: 50px;
+  margin-right: 10px;
+  background: #5cb85c;
+  border-radius: 15px;
+  font-family: sans-serif;
+  text-align: center;
+  color: #fff;
+}
+
 .slider-selection {
   background: #ccc;
 }

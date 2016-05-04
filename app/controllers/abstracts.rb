@@ -78,7 +78,7 @@ module Judy
         raise "User is not an admin" unless user_is_admin?
         content_type 'application/json'
         @abstract = Abstract[params[:id]]
-        %w[title body].each do |attr|
+        %w[title body accepted].each do |attr|
           @abstract.update(attr.to_sym => params[attr]) if !params[attr].nil?
         end
         @abstract.save
