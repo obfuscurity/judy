@@ -65,7 +65,7 @@ module Judy
     post '/abstracts/:abstract_id/scores/?' do
       begin
         content_type 'application/json'
-        @score = Score.upsert(:judge => session[:user], :count => params[:count], :abstract_id => params[:abstract_id])
+        @score = Score.upsert(:judge => session[:user], :count => params[:count], :abstract_id => params[:abstract_id], :comment => params[:comment])
         status 204
       rescue => e
         p e.message

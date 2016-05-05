@@ -22,9 +22,9 @@ class Score < Sequel::Model
   def self.upsert(args)
     @score = Score.filter(:judge => args[:judge], :abstract_id => args[:abstract_id]).first
     if @score.nil?
-      Score.new(:count => args[:count], :judge => args[:judge], :abstract_id => args[:abstract_id]).save
+      Score.new(:count => args[:count], :judge => args[:judge], :abstract_id => args[:abstract_id], :comment => args[:comment]).save
     else
-      @score.update(:count => args[:count]).save
+      @score.update(:count => args[:count], :comment => args[:comment]).save
     end
   end
 
