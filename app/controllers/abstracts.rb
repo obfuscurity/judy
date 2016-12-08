@@ -54,6 +54,7 @@ module Judy
           :type => params[:type],
           :speaker_id => @speaker.id,
           :event_id => 1).save
+        mail_cfp_acknowledgement("#{@speaker.full_name} <#{@speaker.email}>")
         status 200
         erb :'abstracts/new', :locals => { :alert => { :type => 'success', :message => 'Abstract successfully added' } }
       rescue => e

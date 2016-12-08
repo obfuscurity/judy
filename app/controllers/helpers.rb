@@ -50,6 +50,19 @@ module Judy
       def dataset_score_distribution
         return Score.all.reduce([]) {|a,score| a[score.count] ||= 0; a[score.count] += 1; a}.map {|c| c.to_i}.join(',')
       end
+
+      # Mail helpers
+      def mail_cfp_acknowledgement(recipient)
+        message = Mail.new do
+          to      recipient
+          from    'Monitorama PDX 2017 <info@monitorama.com>'
+          subject 'Monitorama PDX 2017 - CFP Submission Received'
+          body    'Thank You'
+
+          delivery_method Mail::Postmark, :api_token => ENV['POSTMARK_API_TOKEN']
+        end
+        message.deliver
+      end
     end
   end
 end

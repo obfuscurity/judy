@@ -6,8 +6,14 @@ GEM
     diff-lcs (1.2.5)
     eventmachine (1.0.3)
     json (1.8.1)
+    mail (2.6.3)
+      mime-types (>= 1.16, < 3)
     method_source (0.8.2)
+    mime-types (1.25.1)
     pg (0.17.1)
+    postmark (1.10.0)
+      json
+      rake
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -48,7 +54,10 @@ PLATFORMS
 
 DEPENDENCIES
   json
+  mail
+  mime-types (< 3.0)
   pg
+  postmark
   pry
   rack-flash3
   rack-ssl-enforcer
@@ -60,3 +69,6 @@ DEPENDENCIES
   sinatra
   sinatra-cross_origin
   thin
+
+BUNDLED WITH
+   1.11.2
