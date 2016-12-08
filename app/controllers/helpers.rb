@@ -58,20 +58,20 @@ module Judy
           from    'Monitorama PDX 2017 <info@monitorama.com>'
           subject 'Monitorama PDX 2017 - CFP Submission Received'
           body    <<-EOS
-                  Greetings!\n\n
-                  On behalf of the Monitorama team, I want to personally thank you for
-                  submitting your proposal for our upcoming event. Your abstract has been
-                  successfully recorded, and we expect to review it in the coming weeks.
-                  We should finish our deliberations by Feb 15, 2017, and we will send out
-                  notifications shortly thereafter.\n\n
-                  Please note that you're allowed, nay, *encouraged*, to submit multiple
-                  proposals. We're very excited to see what sort of proposals come in this
-                  year. Regardless of the outcome, we hope that you're making plans to
-                  join us in Portland for this event.\n\n
-                  Best wishes,\n\n
-                  Jason Dixon\n
-                  Monitorama PDX 2017
-                  EOS
+Greetings!\n
+On behalf of the Monitorama team, I want to personally thank you for
+submitting your proposal for our upcoming event. Your abstract has been
+successfully recorded, and we expect to review it in the coming weeks.
+We should finish our deliberations by Feb 15, 2017, and we will send out
+notifications shortly thereafter.\n
+Please note that you're allowed, nay, *encouraged*, to submit multiple
+proposals. We're very excited to see what sort of proposals come in this
+year. Regardless of the outcome, we hope that you're making plans to
+join us in Portland for this event.\n
+Best wishes,\n
+Jason Dixon
+Monitorama PDX 2017
+EOS
 
           delivery_method Mail::Postmark, :api_token => ENV['POSTMARK_API_TOKEN']
         end
