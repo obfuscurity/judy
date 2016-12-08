@@ -47,7 +47,7 @@ module Judy
     post '/abstracts/new/?' do
       cross_origin
       begin
-        @speaker = Speaker.new(:full_name => params[:full_name], :email => params[:email]).save
+        @speaker = Speaker.new(:full_name => params[:full_name], :email => params[:email], :twitter => params[:twitter], :github => params[:github]).save
         @abstract = Abstract.new(
           :title => params[:title],
           :body => params[:body],
