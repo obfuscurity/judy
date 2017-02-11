@@ -209,9 +209,3 @@ div.progress {
 div.footer {
   min-height: 150px;
 }
-
-// stop google chrome from showing urls when printing
-@media print {
-  a:after { content:''; }
-  a[href]:after { content: none !important; }
-}
