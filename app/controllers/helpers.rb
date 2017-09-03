@@ -52,31 +52,20 @@ module Judy
       end
 
       # Mail helpers
+      def send_mail_acknowledgement?
+        !ENV['POSTMARK_API_TOKEN'].nil? && !ENV['MAIL_FROM_ADDRESS'].nil? && !ENV['POSTMARK_TEMPLATE_ID'].nil?
+      end
       def mail_cfp_acknowledgement(args)
-        message = Mail.new do
-          to      args[:recipient]
-          from    'Monitorama PDX 2017 <info@monitorama.com>'
-          subject 'Monitorama PDX 2017 - CFP Submission Received'
-          body    <<-EOS
-Greetings!\n
-On behalf of the Monitorama team, I want to personally thank you for
-submitting your proposal for our upcoming event. Your abstract has been
-successfully recorded, and we expect to review it in the coming weeks.
-We should finish our deliberations by Feb 15, 2017, and we will send out
-notifications shortly thereafter.\n
-Title: "#{args[:title]}"\n
-Please note that you're allowed, nay, *encouraged*, to submit multiple
-proposals. We're very excited to see what sort of proposals come in this
-year. Regardless of the outcome, we hope that you're making plans to
-join us in Portland for this event.\n
-Best wishes,\n
-Jason Dixon
-Monitorama PDX 2017
-EOS
-
-          delivery_method Mail::Postmark, :api_token => ENV['POSTMARK_API_TOKEN']
-        end
-        message.deliver
+        client = Postmark::ApiClient.new(ENV['POSTMARK_API_TOKEN'])
+        client.deliver(
+          track_opens: true,
+          from: ENV['MAIL_FROM_ADDRESS'],
+          to: args[:recipient],
+          template_id: ENV['POSTMARK_TEMPLATE_ID'],
+          template_model: {
+            title: args[:title]
+          }
+        )
       end
     end
   end
