@@ -52,7 +52,7 @@ module Judy
       end
 
       # Mail helpers
-      def send_mail_acknowledgement?
+      def mail_cfp_acknowledgement?
         !ENV['POSTMARK_API_TOKEN'].nil? && !ENV['MAIL_FROM_ADDRESS'].nil? && !ENV['POSTMARK_TEMPLATE_ID'].nil?
       end
       def mail_cfp_acknowledgement(args)
