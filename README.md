@@ -76,7 +76,7 @@ Best wishes,
 The Event Organizers
 ```
 
-The related environment variables must be set for this feature to be enabled. If any of these variables are unset, email acknowledgement will not be attempted.
+The related environment variables must be set for this feature to be enabled. If any of these variables are unset, email acknowledgement will not be attempted. Note that you will almost certainly want to create a Postmark Sender Signature to match your `MAIL_FROM_ADDRESS`.
 
 ```
 POSTMARK_API_TOKEN=12345678-abcd-1234-5678-abcd12345678
