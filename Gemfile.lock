@@ -6,8 +6,6 @@ GEM
     diff-lcs (1.2.5)
     eventmachine (1.0.4)
     json (1.8.1)
-    mail (2.6.3)
-      mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (1.25.1)
     pg (0.17.1)
@@ -54,7 +52,6 @@ PLATFORMS
 
 DEPENDENCIES
   json
-  mail
   mime-types (< 3.0)
   pg
   postmark

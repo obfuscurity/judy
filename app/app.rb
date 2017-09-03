@@ -3,7 +3,6 @@ require 'sinatra/cross_origin'
 require 'rack-ssl-enforcer'
 require 'rack-flash'
 require 'json'
-require 'mail'
 require 'postmark'
 
 require 'models/init'

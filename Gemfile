@@ -18,7 +18,6 @@ gem 'pry'
 # lock in mime-types < 3.0 since it pulls
 # in mime-types-data > 3.x requiring Ruby 2.x
 gem 'mime-types', '< 3.0'
-gem 'mail'
 gem 'postmark'
 
 group :development do
