@@ -57,7 +57,7 @@ module Judy
       end
       def mail_cfp_acknowledgement(args)
         client = Postmark::ApiClient.new(ENV['POSTMARK_API_TOKEN'])
-        client.deliver(
+        client.deliver_with_template(
           track_opens: true,
           from: ENV['MAIL_FROM_ADDRESS'],
           to: args[:recipient],
