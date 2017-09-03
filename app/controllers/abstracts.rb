@@ -47,13 +47,16 @@ module Judy
     post '/abstracts/new/?' do
       cross_origin
       begin
-        @speaker = Speaker.new(:full_name => params[:full_name], :email => params[:email]).save
+        @speaker = Speaker.new(:full_name => params[:full_name], :email => params[:email], :twitter => params[:twitter], :github => params[:github]).save
         @abstract = Abstract.new(
           :title => params[:title],
           :body => params[:body],
           :type => params[:type],
           :speaker_id => @speaker.id,
           :event_id => 1).save
+        if mail_cfp_acknowledgement?
+          mail_cfp_acknowledgement(:recipient => "#{@speaker.full_name} <#{@speaker.email}>", :title => @abstract.title)
+        end
         status 200
         erb :'abstracts/new', :locals => { :alert => { :type => 'success', :message => 'Abstract successfully added' } }
       rescue => e

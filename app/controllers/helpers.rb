@@ -50,6 +50,23 @@ module Judy
       def dataset_score_distribution
         return Score.all.reduce([]) {|a,score| a[score.count] ||= 0; a[score.count] += 1; a}.map {|c| c.to_i}.join(',')
       end
+
+      # Mail helpers
+      def mail_cfp_acknowledgement?
+        !ENV['POSTMARK_API_TOKEN'].nil? && !ENV['MAIL_FROM_ADDRESS'].nil? && !ENV['POSTMARK_TEMPLATE_ID'].nil?
+      end
+      def mail_cfp_acknowledgement(args)
+        client = Postmark::ApiClient.new(ENV['POSTMARK_API_TOKEN'])
+        client.deliver_with_template(
+          track_opens: true,
+          from: ENV['MAIL_FROM_ADDRESS'],
+          to: args[:recipient],
+          template_id: ENV['POSTMARK_TEMPLATE_ID'],
+          template_model: {
+            title: args[:title]
+          }
+        )
+      end
     end
   end
 end
