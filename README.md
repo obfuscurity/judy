@@ -29,7 +29,7 @@ Judy's design goals are straightforward:
 * Interpreting the results should be simple.
 * The interface should fulfill all of the above requirements, particularly on mobile devices, with as few clicks as possible.
 
-Judy has already helped us to review seventy-eight (78) submissions for the upcoming Monitorama PDX conference in record time. It enabled us to bring in a larger team of volunteers to review and judge papers than would have previously been possible, increasing diversity and helping to float the very best talks to the top of the stack.
+Judy has helped numerous users review thousands of submissions for a variety of events. For our own events, it enabled us to bring in a larger team of volunteers to review and judge papers than would have previously been possible, increasing diversity and helping to float the very best talks to the top of the stack.
 
 ## Deployment
 
@@ -43,6 +43,9 @@ All environment variables can be set from the command-line, although it's sugges
 * `JUDY_AUTH` (required)
 * `JUDY_ADMIN` (optional)
 * `FORCE_HTTPS` (optional)
+* `POSTMARK_API_TOKEN` (optional)
+* `POSTMARK_TEMPLATE_ID` (optional)
+* `MAIL_FROM_ADDRESS` (optional)
 
 ### Authorization
 
@@ -59,6 +62,27 @@ JUDY_ADMIN=user1,user3
 ```
 
 Administrators are able to *edit* and *delete* abstracts from the abstract view.
+
+### Submission Acknowledgement via Email
+
+Judy supports email acknowledgement of abstract submission via the Postmark email delivery API. This feature is an optional but helpful way to notify prospective speakers that their form submission was received. This feature makes use of Postmark's [Templates](https://postmarkapp.com/support/article/786-using-a-postmark-starter-template) feature. You should include a variable for the abstract `title`; currently this is the only variable passed through Postmark's `template_model`.
+
+```
+Thank you for your submission!
+
+Title: {{ title }}
+
+Best wishes,
+The Event Organizers
+```
+
+The related environment variables must be set for this feature to be enabled. If any of these variables are unset, email acknowledgement will not be attempted.
+
+```
+POSTMARK_API_TOKEN=12345678-abcd-1234-5678-abcd12345678
+POSTMARK_TEMPLATE_ID=1234567
+MAIL_FROM_ADDRESS=Event 2018 <foo@bar.com>
+```
 
 ### Local
 
