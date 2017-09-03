@@ -61,7 +61,7 @@ module Judy
         erb :'abstracts/new', :locals => { :alert => { :type => 'success', :message => 'Abstract successfully added' } }
       rescue => e
         p e.message
-        halt e.message
+        halt 402, {'Content-Type' => 'text/plain'}, e.message
       end
     end
 
@@ -72,7 +72,7 @@ module Judy
         status 204
       rescue => e
         p e.message
-        halt e.message
+        halt 402, {'Content-Type' => 'text/plain'}, e.message
       end
     end
 
