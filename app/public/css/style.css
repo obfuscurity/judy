@@ -84,6 +84,7 @@ ul.abstracts li span.count {
   display: inline-block;
   min-width: 25px;
   margin-left: 65px;
+  margin-bottom: 3px;
   background: #bbb;
   border-radius: 12px;
   font-family: sans-serif;
