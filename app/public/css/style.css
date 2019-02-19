@@ -79,8 +79,20 @@ ul.abstracts li span.score {
   color: #fff;
 }
 
-ul.abstracts li span.comment {
+ul.abstracts li span.count {
+  display: inline-block;
+  min-width: 25px;
   margin-left: 65px;
+  margin-bottom: 3px;
+  background: #bbb;
+  border-radius: 12px;
+  font-family: sans-serif;
+  text-align: center;
+  color: #fff;
+}
+
+ul.abstracts li span.comment {
+  margin-left: 8px;
 }
 
 ul.abstracts li a, ul.events li a {

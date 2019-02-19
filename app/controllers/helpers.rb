@@ -34,6 +34,13 @@ module Judy
         end
         return false
       end
+      def user_is_chair?
+	return true if user_is_admin?
+        ENV['JUDY_CHAIR'].split(',').each do |chair|
+	  return true if chair.eql?(@auth.credentials.first)
+        end
+        return false
+      end
       def judges
         ENV['JUDY_AUTH'].split(',').each.map {|a| a.split(':').first}
       end

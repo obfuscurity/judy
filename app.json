@@ -22,6 +22,11 @@
       "value": "user,user3",
       "required": false
     },
+    "JUDY_CHAIR": {
+      "description": "Users (names from JUDY_AUTH) that are allowed to view score details and comments",
+      "value": "user,user3",
+      "required": false
+    },
     "FORCE_HTTPS": {
         "description": "Always use HTTPS (you probably don't want to change this)",
         "value": "true",
