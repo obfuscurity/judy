@@ -42,6 +42,7 @@ All environment variables can be set from the command-line, although it's sugges
 * `DATABASE_URL` (required)
 * `JUDY_AUTH` (required)
 * `JUDY_ADMIN` (optional)
+* `JUDY_CHAIR` (optional)
 * `FORCE_HTTPS` (optional)
 * `POSTMARK_API_TOKEN` (optional)
 * `POSTMARK_TEMPLATE_ID` (optional)
@@ -62,6 +63,12 @@ JUDY_ADMIN=user1,user3
 ```
 
 Administrators are able to *edit* and *delete* abstracts from the abstract view.
+
+Users listed in the `JUDY_CHAIR` environment variable have access to per-reviewer scores and comments on the scores page. Any users already specified in `JUDY_ADMIN` inherit this functionality.
+
+```
+JUDY_CHAIR=user2
+```
 
 ### Submission Acknowledgement via Email
 
