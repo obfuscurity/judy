@@ -53,7 +53,6 @@
       </span>
       <a href="/abstracts/<%= abstract.id %>"><%= abstract.title %></a><span class="author"> by <a href="mailto:<%= abstract[:email] %>"><%= abstract[:speaker] %></a></span><br>
       <% abstract[:scores].each do |review| %>
-        <% next if review[:comment].empty? %>
 	<span class="count"><%= review[:count] %></span><span class="comment"><strong><%= review[:judge] %>:</strong>  <%= review[:comment] %></span><br>
       <% end %>
     </li>
