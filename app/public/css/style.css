@@ -82,8 +82,8 @@ ul.abstracts li span.score {
 ul.abstracts li span.count {
   visibility: hidden;
   display: inline-block;
-  min-width: 40px;
-  margin-right: 8px;
+  min-width: 25px;
+  margin-left: 65px;
   background: #bbb;
   border-radius: 12px;
   font-family: sans-serif;
@@ -92,7 +92,7 @@ ul.abstracts li span.count {
 }
 
 ul.abstracts li span.comment {
-  margin-left: 65px;
+  margin-left: 8px;
 }
 
 ul.abstracts li a, ul.events li a {
