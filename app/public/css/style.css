@@ -80,7 +80,6 @@ ul.abstracts li span.score {
 }
 
 ul.abstracts li span.count {
-  visibility: hidden;
   display: inline-block;
   min-width: 25px;
   margin-left: 65px;
