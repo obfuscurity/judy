@@ -52,9 +52,11 @@
         <% end %>
       </span>
       <a href="/abstracts/<%= abstract.id %>"><%= abstract.title %></a><span class="author"> by <a href="mailto:<%= abstract[:email] %>"><%= abstract[:speaker] %></a></span><br>
-      <% if user_is_chair? %>
-        <% abstract[:scores].each do |review| %>
+      <% abstract[:scores].each do |review| %>
+        <% if user_is_chair? %>
           <span class="count"><%= review[:count] %></span><span class="comment"><strong><%= review[:judge] %>:</strong>  <%= review[:comment] %></span><br>
+        <% elsif user.eql?(review[:judge]) %>
+          <span class="count"><%= review[:count] %></span><span class="comment"><%= review[:comment] %></span><br>
         <% end %>
       <% end %>
     </li>
