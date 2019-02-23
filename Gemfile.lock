@@ -5,9 +5,8 @@ GEM
     daemons (1.1.9)
     diff-lcs (1.2.5)
     eventmachine (1.0.4)
-    json (1.8.1)
+    json (2.2.0)
     method_source (0.8.2)
-    mime-types (1.25.1)
     pg (0.17.1)
     postmark (1.10.0)
       json
@@ -52,7 +51,6 @@ PLATFORMS
 
 DEPENDENCIES
   json
-  mime-types (< 3.0)
   pg
   postmark
   pry
@@ -68,7 +66,7 @@ DEPENDENCIES
   thin
 
 RUBY VERSION
-   ruby 2.2.7p470
+   ruby 2.6.1p33
 
 BUNDLED WITH
-   1.14.6
+   1.17.2

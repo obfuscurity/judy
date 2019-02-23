@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.2.7'
+ruby '2.6.1'
 
 gem 'rake'
 gem 'sinatra'
@@ -14,10 +14,6 @@ gem 'rack-flash3'
 gem 'json'
 gem 'pry'
 
-# the following is for the postmark addon
-# lock in mime-types < 3.0 since it pulls
-# in mime-types-data > 3.x requiring Ruby 2.x
-gem 'mime-types', '< 3.0'
 gem 'postmark'
 
 group :development do
