@@ -21,7 +21,7 @@ class Abstract < Sequel::Model
   end
 
   def self.fetch_all_abstracts_and_scores(args=nil)
-    @abstracts = Abstract.select(Sequel.lit('abstracts.*, speakers.full_name AS speaker, speakers.email, events.name AS event_name'.lit).distinct.
+    @abstracts = Abstract.select(Sequel.lit('abstracts.*, speakers.full_name AS speaker, speakers.email, events.name AS event_name')).distinct.
       from(:abstracts, :speakers, :events).
       where(Sequel.lit('abstracts.speaker_id = speakers.id AND abstracts.event_id = events.id')).
       order(Sequel.lit('abstracts.id')).all
