@@ -2,3 +2,6 @@
 !.env.example
 .rbenv-version
 .ruby-version
+.vagrant
+Vagrantfile
+*.log
