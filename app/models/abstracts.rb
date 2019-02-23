@@ -21,11 +21,10 @@ class Abstract < Sequel::Model
   end
 
   def self.fetch_all_abstracts_and_scores(args=nil)
-    @abstracts = Abstract.select('abstracts.*'.lit, 'speakers.full_name AS speaker'.lit, :speakers__email, 'events.name AS event_name'.lit).distinct.
+    @abstracts = Abstract.select(Sequel.lit('abstracts.*, speakers.full_name AS speaker, speakers.email, events.name AS event_name')).distinct.
       from(:abstracts, :speakers, :events).
-      where(:abstracts__speaker_id => :speakers__id).
-      where(:abstracts__event_id => :events__id).
-      order(:abstracts__id).all
+      where(Sequel.lit('abstracts.speaker_id = speakers.id AND abstracts.event_id = events.id')).
+      order(Sequel.lit('abstracts.id')).all
     @scores = Score.all
     @abstracts.each do |abstract|
       abstract.values[:scores] = [] if abstract.values[:scores].nil?
@@ -60,11 +59,9 @@ class Abstract < Sequel::Model
   end
 
   def self.fetch_one_abstract_with_score_by_judge(args)
-    @abstract = Abstract.select('abstracts.*'.lit, 'speakers.full_name AS speaker'.lit, :speakers__email, 'events.name AS event_name'.lit).
+    @abstract = Abstract.select(Sequel.lit('abstracts.*, speakers.full_name AS speaker, speakers.email, events.name AS event_name')).
       from(:abstracts, :speakers, :events).
-      where(:abstracts__id => args[:id]).
-      where(:abstracts__speaker_id => :speakers__id).
-      where(:abstracts__event_id => :events__id).first
+      where(Sequel.lit("abstracts.id = #{args[:id]} AND abstracts.speaker_id = speakers.id AND abstracts.event_id = events.id")).first
     @score = Score.filter(:judge => args[:judge], :abstract_id => args[:id]).first
     @abstract[:score] = @score.count if !@score.nil?
     @abstract[:comment] = @score.comment
