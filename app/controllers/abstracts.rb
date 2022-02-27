@@ -55,7 +55,7 @@ module Judy
           :speaker_id => @speaker.id,
           :event_id => 1).save
         if mail_cfp_acknowledgement?
-          mail_cfp_acknowledgement(:recipient => "#{@speaker.full_name} <#{@speaker.email}>", :title => @abstract.title)
+          mail_cfp_acknowledgement(:recipient => "#{@speaker.full_name} <#{@speaker.email}>", :title => @abstract.title, :body => @abstract.body)
         end
         status 200
         erb :'abstracts/new', :locals => { :alert => { :type => 'success', :message => 'Abstract successfully added' } }

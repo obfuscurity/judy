@@ -70,7 +70,8 @@ module Judy
           to: args[:recipient],
           template_id: ENV['POSTMARK_TEMPLATE_ID'],
           template_model: {
-            title: args[:title]
+            title: args[:title],
+            body: args[:body]
           }
         )
       end
