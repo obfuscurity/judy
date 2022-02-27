@@ -72,12 +72,14 @@ JUDY_CHAIR=user2
 
 ### Submission Acknowledgement via Email
 
-Judy supports email acknowledgement of abstract submission via the Postmark email delivery API. This feature is an optional but helpful way to notify prospective speakers that their form submission was received. This feature makes use of Postmark's [Templates](https://postmarkapp.com/support/article/786-using-a-postmark-starter-template) feature. You should include a variable for the abstract `title`; currently this is the only variable passed through Postmark's `template_model`.
+Judy supports email acknowledgement of abstract submission via the Postmark email delivery API. This feature is an optional but helpful way to notify prospective speakers that their form submission was received. This feature makes use of Postmark's [Templates](https://postmarkapp.com/support/article/786-using-a-postmark-starter-template) feature. You should include variables for the abstract `title` and `body` values; currently these are the only variables passed through Postmark's `template_model`.
 
 ```
 Thank you for your submission!
 
 Title: {{ title }}
+
+Abstract: {{ body }}
 
 Best wishes,
 The Event Organizers
