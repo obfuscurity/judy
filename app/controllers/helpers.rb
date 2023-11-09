@@ -67,7 +67,6 @@ module Judy
         client = Postmark::ApiClient.new(ENV['POSTMARK_API_TOKEN'])
         client.deliver_with_template(
           track_opens: true,
-          message_stream: 'outbound',
           from: ENV['MAIL_FROM_ADDRESS'],
           to: args[:recipient],
           template_id: ENV['POSTMARK_TEMPLATE_ID'],
@@ -76,7 +75,6 @@ module Judy
             body: args[:body]
           }
         )
-        puts error
       end
     end
   end
