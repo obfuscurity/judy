@@ -1,11 +1,13 @@
 source 'http://rubygems.org'
 
-ruby '2.7.5'
+ruby '3.2.2'
 
+gem 'foreman'
 gem 'rake'
-gem 'sinatra'
+gem 'sinatra', '~> 4.1.0'
 gem 'sinatra-cross_origin'
-gem 'thin'
+gem 'rackup'
+gem 'puma'
 gem 'pg'
 gem 'sequel'
 gem 'simple_stats'
