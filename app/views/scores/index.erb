@@ -41,7 +41,11 @@
   <ul class="abstracts">
     <% @abstracts.each do |abstract| %>
     <li class="<%= abstract.type %>">
+      <% if user_is_admin? && abstract.accepted == 1 %>
+      <span class="score-accept">
+      <% else %>
       <span class="score">
+      <% end %>
         <% sort_type = "#{@sort}_score".to_sym %>
         <% if ! abstract[sort_type].nil? %>
           <% if @sort.eql?('mode') %>
