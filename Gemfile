@@ -4,7 +4,7 @@ ruby '3.2.2'
 
 gem 'foreman'
 gem 'rake'
-gem 'sinatra', '~> 4.1.0'
+gem 'sinatra', '~> 4.2.0'
 gem 'sinatra-cross_origin'
 gem 'rackup'
 gem 'puma'
