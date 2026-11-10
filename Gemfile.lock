@@ -20,7 +20,7 @@ GEM
       method_source (~> 1.0)
     puma (7.2.1)
       nio4r (~> 2.0)
-    rack (3.2.6)
+    rack (3.2.8)
     rack-flash3 (1.0.5)
       rack
     rack-protection (4.2.0)
